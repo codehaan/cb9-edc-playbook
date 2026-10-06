@@ -1,17 +1,26 @@
 # CB9 Small Business Playbook (prototype)
 
-An interactive prototype of a plain-language, mobile-first "one-stop shop" for small business owners in Brooklyn Community District 9, proposed by the CB9 Economic Development Committee.
+A small neighborhood help desk for businesses in Brooklyn Community District 9, from the CB9 Economic Development Committee. It's built to be demoed at the December small-business brunch, which is our first test with owners.
 
-Open `index.html` in a browser. No build step. It's a single file of HTML, CSS and JavaScript, and Google Fonts is its only outside dependency.
+Open `index.html` in a browser. There's no build step, and Google Fonts is the only outside dependency.
 
-## What's in it
+## What CB9 does here
 
-- **Home:** "What do you need help with?" with 10 task cards, keyword search, and a quick three-tap guide
-- **Topic pages** on a shared template: Start here → What to do → Official resources → What to expect → If you get stuck → Can CB9 help?
-- **Doing Business in CB9:** opt-in directory with filters, an "I can offer / I'm looking for" board, ways to get involved, and the "What We Heard" accountability tracker
-- **Events**, the **Ask CB9** intake form, the **Local Business Network** sign-up form, and **About**
-- **Brunch QR landing page** at `index.html#brunch`
+We curate, explain, connect and escalate. We don't replace SBS, MyCity, 311, lawyers, lenders or City agencies.
+
+## Structure
+
+- **Home:** "What do you need help with?", seven problem cards, How CB9 can help, what's coming up, What we're hearing, and the Tell CB9 call to action
+- **Seven pathways** (`#help-lease`, `#help-city`, `#help-money`, `#help-trash`, `#help-customers`, `#help-connect`, `#help-unsure`). Each one follows: What to do first → Your next steps → Best official resource → If that doesn't solve it → Still stuck? Tell CB9
+- **Doing Business in CB9** (`#local`): events, three ways to take part, and What we're hearing
+- **Tell CB9** (`#tell`), the safety net, which is always one tap away
+- **Join the network** (`#join`)
+- **Brunch QR landing page** (`#brunch`)
+
+## Updating content
+
+The pathways, events and "What we're hearing" items are plain data arrays (`P`, `EVENTS`, `HEARD`) near the top of the script in `index.html`.
 
 ## Placeholders
 
-Anything marked **VERIFY** or shown as a highlighted `[placeholder]` needs confirmation by CB9 before launch. Directory listings, board posts, event dates and What We Heard issues are sample content. The forms don't submit anywhere yet.
+Anything marked **VERIFY** or shown as a highlighted `[placeholder]` needs CB9 confirmation before launch. The forms and the "Did this page help?" buttons don't send data anywhere yet.

@@ -4,30 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CB9 Small Business Playbook</title>
-<meta name="description" content="A plain-language guide for small businesses in Brooklyn Community District 9.">
+<meta name="description" content="A small neighborhood help desk for businesses in Brooklyn Community District 9.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
-/* Layout: storefront awning + street-sign wayfinding over a calm, high-contrast reading column.
-   Tasks first (card grid), local content second, one marigold band for joining, one green band for asking. */
+/* Layout: a neighborhood help desk. Storefront awning + street-sign wayfinding, one narrow reading column,
+   seven problem cards, and one persistent "Tell CB9" safety net. */
 :root{
   --paper:#F3F5F0; --surface:#FFFFFF; --ink:#13201A; --ink-2:#46564D; --line:#D3DCD5;
   --green:#0A6A44; --green-fill:#0A6A44; --on-green:#FFFFFF; --mint:#E0EEE5;
   --marigold:#F2B230; --on-marigold:#1C1406; --butter:#FCEFC9;
-  --brick:#A63A22; --brick-fill:#A63A22; --on-brick:#FFFFFF; --blush:#F8E2DA;
+  --brick:#A63A22;
   --sign:#0A6A44; --on-sign:#FFFFFF; --awning-b:#FFFFFF;
   --verify-bg:#FFF2CF; --verify-ink:#734600; --verify-line:#C98A00;
   --focus:#13201A; --shadow:0 1px 0 rgba(19,32,26,.06), 0 8px 24px -12px rgba(19,32,26,.18);
   --display:"Archivo","Arial Narrow","Helvetica Neue",Arial,sans-serif;
   --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --r:14px;
+  --r:14px; --col:46rem;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#0D1411; --surface:#16211B; --ink:#E7EEE9; --ink-2:#A8B8AE; --line:#2C3B32;
   --green:#4CC48C; --green-fill:#0E5A3A; --on-green:#FFFFFF; --mint:#173126;
   --marigold:#F2B230; --on-marigold:#1C1406; --butter:#2C2410;
-  --brick:#EE8A70; --brick-fill:#9C3520; --on-brick:#FFFFFF; --blush:#36201A;
+  --brick:#EE8A70;
   --sign:#0E5A3A; --on-sign:#FFFFFF; --awning-b:#DCE6DF;
   --verify-bg:#3A2D0B; --verify-ink:#F7D27A; --verify-line:#B88600;
   --focus:#F2B230; --shadow:0 1px 0 rgba(0,0,0,.3), 0 10px 26px -14px rgba(0,0,0,.6);
@@ -36,43 +36,42 @@
   --paper:#0D1411; --surface:#16211B; --ink:#E7EEE9; --ink-2:#A8B8AE; --line:#2C3B32;
   --green:#4CC48C; --green-fill:#0E5A3A; --on-green:#FFFFFF; --mint:#173126;
   --marigold:#F2B230; --on-marigold:#1C1406; --butter:#2C2410;
-  --brick:#EE8A70; --brick-fill:#9C3520; --on-brick:#FFFFFF; --blush:#36201A;
+  --brick:#EE8A70;
   --sign:#0E5A3A; --on-sign:#FFFFFF; --awning-b:#DCE6DF;
   --verify-bg:#3A2D0B; --verify-ink:#F7D27A; --verify-line:#B88600;
   --focus:#F2B230; --shadow:0 1px 0 rgba(0,0,0,.3), 0 10px 26px -14px rgba(0,0,0,.6);
   color-scheme:dark}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased}
 @media (max-width:600px){body{font-size:1.0625rem}}
-h1,h2,h3,h4{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
-h1{font-size:clamp(2.25rem,6vw,3.75rem);font-weight:800;font-stretch:78%}
-h2{font-size:clamp(1.75rem,3.6vw,2.5rem);font-weight:800;font-stretch:80%}
-h3{font-size:1.375rem;font-weight:700;font-stretch:88%}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.25rem,6vw,3.5rem);font-weight:800;font-stretch:78%}
+h2{font-size:clamp(1.6rem,3.4vw,2.25rem);font-weight:800;font-stretch:80%}
+h3{font-size:1.3rem;font-weight:700;font-stretch:88%}
 p{margin:0}
 a{color:var(--green);text-underline-offset:3px;text-decoration-thickness:1.5px}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
-img,svg{max-width:100%}
-.wrap{max-width:72rem;margin-inline:auto;padding-inline:clamp(1rem,4vw,2rem)}
+.wrap{max-width:68rem;margin-inline:auto;padding-inline:clamp(1rem,4vw,2rem)}
+.narrow{max-width:var(--col)}
 .stack{display:flex;flex-direction:column}
 .muted{color:var(--ink-2)}
 .eyebrow{font-family:var(--display);font-stretch:85%;font-weight:700;text-transform:uppercase;letter-spacing:.09em;font-size:.875rem;color:var(--green)}
-.lede{font-size:1.25rem;color:var(--ink-2);max-width:40rem}
+.lede{font-size:1.1875rem;color:var(--ink-2);max-width:38rem}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ico{width:1.5em;height:1.5em;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
 
 /* placeholders */
-.verify{display:inline-flex;align-items:center;gap:.25rem;font-family:var(--display);font-stretch:85%;font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--verify-ink);background:var(--verify-bg);border:1.5px dashed var(--verify-line);border-radius:6px;padding:.05rem .4rem;vertical-align:.15em;white-space:nowrap}
+.verify{display:inline-flex;align-items:center;font-family:var(--display);font-stretch:85%;font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--verify-ink);background:var(--verify-bg);border:1.5px dashed var(--verify-line);border-radius:6px;padding:.05rem .4rem;vertical-align:.15em;white-space:nowrap}
 .ph{background:var(--verify-bg);color:var(--verify-ink);border-bottom:1.5px dashed var(--verify-line);padding:0 .2em;border-radius:3px}
 
-/* prototype ribbon */
+/* ribbon + header */
 .ribbon{background:var(--ink);color:var(--paper);font-size:.9375rem}
-.ribbon .wrap{display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:center;justify-content:space-between;padding-block:.5rem}
+.ribbon .wrap{display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:center;justify-content:space-between;padding-block:.45rem}
 .ribbon a{color:var(--marigold);font-weight:700}
-
-/* header */
 .skip{position:absolute;left:1rem;top:-4rem;z-index:99;background:var(--marigold);color:var(--on-marigold);border:0;padding:.75rem 1rem;border-radius:8px;font-weight:700}
 .skip:focus{top:1rem}
 header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--surface);border-bottom:1px solid var(--line)}
@@ -82,251 +81,162 @@ header.site .wrap{display:flex;align-items:center;gap:1rem;min-height:4.25rem}
 .brand b{display:block;font-family:var(--display);font-weight:800;font-stretch:82%;font-size:1.2rem;line-height:1.05}
 .brand small{display:block;font-size:.8125rem;color:var(--ink-2);line-height:1.2}
 nav.main{display:flex;gap:.25rem;align-items:center}
-nav.main a{color:var(--ink);text-decoration:none;font-weight:700;font-size:1rem;padding:.6rem .75rem;border-radius:8px}
-nav.main a[aria-current="page"]{background:var(--mint);color:var(--green)}
-nav.main a:hover{background:var(--mint)}
-.hdr-actions{display:flex;gap:.5rem;align-items:center}
-.iconbtn{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;min-width:44px;justify-content:center;padding:.4rem .7rem;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;cursor:pointer;font-weight:700;font-size:.9375rem}
-.menu-btn{display:none}
-@media (max-width:960px){nav.main{display:none}.menu-btn{display:inline-flex}.hdr-ask .lbl-long{display:none}}
-@media (max-width:420px){.brand small{display:none}.hdr-ask{display:none!important}}
-.sheet{border-top:1px solid var(--line);background:var(--surface)}
-.sheet nav{display:grid;gap:.25rem;padding-block:.75rem 1rem}
-.sheet a{display:flex;justify-content:space-between;align-items:center;padding:.9rem .5rem;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;font-size:1.125rem}
-.langpanel{border-top:1px solid var(--line);background:var(--butter)}
-.langpanel .wrap{padding-block:1rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
-.langpanel button{min-height:44px;padding:.4rem .9rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer}
-.langpanel button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;padding:.75rem 1.35rem;border-radius:999px;border:2px solid transparent;font-weight:700;font-size:1.0625rem;text-decoration:none;cursor:pointer;line-height:1.2;text-align:center}
-.btn .ico{width:1.25em;height:1.25em}
-.btn-primary{background:var(--green-fill);color:var(--on-green)}
-.btn-primary:hover{filter:brightness(1.1)}
-.btn-accent{background:var(--marigold);color:var(--on-marigold)}
-.btn-accent:hover{filter:brightness(1.05)}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn-ghost:hover{background:var(--surface)}
-.btn-onfill{background:var(--surface);color:var(--ink)}
-.btn-sm{min-height:2.75rem;padding:.5rem 1rem;font-size:1rem}
-.btnrow{display:flex;flex-wrap:wrap;gap:.75rem}
-
-/* awning */
+nav.main a{color:var(--ink);text-decoration:none;font-weight:700;font-size:1rem;padding:.6rem .75rem;border-radius:8px;white-space:nowrap}
+nav.main a[aria-current="page"],nav.main a:hover{background:var(--mint);color:var(--green)}
+@media (max-width:760px){nav.main{display:none}}
+@media (max-width:420px){.brand small{display:none}}
 .awning{height:30px;background:repeating-linear-gradient(90deg,var(--green-fill) 0 32px,var(--awning-b) 32px 64px);
   -webkit-mask:linear-gradient(#000,#000) top/100% 14px no-repeat,radial-gradient(circle at 50% 0,#000 15.5px,transparent 16px) bottom/32px 16px repeat-x;
           mask:linear-gradient(#000,#000) top/100% 14px no-repeat,radial-gradient(circle at 50% 0,#000 15.5px,transparent 16px) bottom/32px 16px repeat-x}
-
-/* street signs */
 .sign{display:inline-flex;align-items:center;background:var(--sign);color:var(--on-sign);border-radius:6px;padding:.3rem .75rem;font-family:var(--display);font-weight:700;font-stretch:88%;font-size:1rem;box-shadow:inset 0 0 0 2px var(--sign),inset 0 0 0 3.5px var(--on-sign);white-space:nowrap}
 .signs{display:flex;flex-wrap:wrap;gap:.5rem}
 
+/* buttons */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;padding:.75rem 1.35rem;border-radius:999px;border:2px solid transparent;font-weight:700;font-size:1.0625rem;text-decoration:none;cursor:pointer;line-height:1.2;text-align:center}
+.btn .ico{width:1.25em;height:1.25em}
+.btn-primary{background:var(--green-fill);color:var(--on-green)}
+.btn-accent{background:var(--marigold);color:var(--on-marigold)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-sm{min-height:2.75rem;padding:.5rem 1rem;font-size:1rem}
+.btn:hover{filter:brightness(1.08)}
+.btnrow{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+
 /* sections */
-main{display:block;min-height:60vh}
-.section{padding-block:clamp(2.5rem,6vw,4.5rem)}
+main{display:block;min-height:60vh;padding-bottom:5.5rem}
+.section{padding-block:clamp(2.25rem,5vw,3.75rem)}
 .section + .section{border-top:1px solid var(--line)}
-.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.75rem}
-.sec-head .stack{gap:.5rem;max-width:44rem}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.5rem}
+.sec-head .stack{gap:.5rem;max-width:40rem}
+.hero{padding-block:clamp(1.75rem,5vw,3rem) 1.5rem}
+.hero .stack{gap:.9rem}
 
-/* hero */
-.hero{padding-block:clamp(1.75rem,5vw,3.25rem) 1.5rem}
-.hero .stack{gap:1rem}
-.search{position:relative;max-width:40rem;margin-top:.5rem}
-.search .ico{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--ink-2)}
-.search input{width:100%;min-height:3.5rem;padding:.75rem 1rem .75rem 3.25rem;border:2px solid var(--line);border-radius:999px;background:var(--surface);font-size:1.125rem}
-.search input:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 4px var(--mint)}
-.suggest{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;min-height:0}
-.suggest a{display:inline-flex;align-items:center;gap:.4rem;background:var(--mint);color:var(--green);font-weight:700;text-decoration:none;padding:.55rem .9rem;border-radius:999px;font-size:1rem}
-.suggest .none{font-size:1rem}
-
-/* task cards */
-.tasks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.875rem}
-.pcard{position:relative;display:flex;flex-direction:column;gap:.6rem;padding:1.15rem 1.15rem 1rem;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink);min-height:11rem;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+/* the seven cards */
+.tasks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.875rem}
+.pcard{display:flex;flex-direction:column;gap:.75rem;padding:1.2rem;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink);min-height:10rem;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
 .pcard:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--shadow)}
-.pcard .ic{display:grid;place-items:center;width:3rem;height:3rem;border-radius:12px;background:var(--mint);color:var(--green)}
+.pcard .ic{display:grid;place-items:center;width:3rem;height:3rem;border-radius:12px;background:var(--mint);color:var(--green);flex:none}
 .pcard .ic .ico{width:1.65rem;height:1.65rem}
-.pcard .t{font-family:var(--display);font-weight:800;font-stretch:84%;font-size:1.375rem;line-height:1.12}
-.pcard .s{font-size:1rem;color:var(--ink-2);line-height:1.4}
-.pcard .go{margin-top:auto;display:flex;align-items:center;gap:.35rem;font-weight:700;font-size:.9375rem;color:var(--green)}
+.pcard .t{font-family:var(--display);font-weight:800;font-stretch:84%;font-size:1.45rem;line-height:1.12;flex:1}
+.pcard .go{display:flex;align-items:center;gap:.35rem;font-weight:700;font-size:.9375rem;color:var(--green)}
 .pcard .go .ico{width:1.1em;height:1.1em}
-.pcard.urgent{background:var(--brick-fill);border-color:var(--brick-fill);color:var(--on-brick)}
-.pcard.urgent .ic{background:rgba(255,255,255,.16);color:var(--on-brick)}
-.pcard.urgent .s,.pcard.urgent .go{color:var(--on-brick)}
-.pcard.wide{grid-column:span 2;flex-direction:row;align-items:center;min-height:0;gap:1rem}
-.pcard.wide .body{display:flex;flex-direction:column;gap:.25rem;min-width:0}
-.pcard.wide .go{margin:0 0 0 auto}
-.pcard.unsure{border-style:dashed;border-width:2px;background:transparent}
-.pcard.cb9{background:var(--green-fill);border-color:var(--green-fill);color:var(--on-green)}
-.pcard.cb9 .ic{background:rgba(255,255,255,.16);color:var(--on-green)}
-.pcard.cb9 .s,.pcard.cb9 .go{color:var(--on-green)}
-@media (max-width:960px){.tasks{grid-template-columns:repeat(2,minmax(0,1fr))}.pcard.wide{grid-column:span 1}}
+.pcard.wide{grid-column:1 / -1;flex-direction:row;align-items:center;min-height:0;border-style:dashed;border-width:2px;background:transparent}
+.pcard.wide .t{flex:1}
+@media (max-width:900px){.tasks{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){
   .tasks{grid-template-columns:1fr;gap:.5rem}
-  .pcard,.pcard.wide{flex-direction:row;align-items:center;min-height:4.5rem;padding:.8rem .9rem;gap:.85rem;grid-column:auto}
+  .pcard,.pcard.wide{flex-direction:row;align-items:center;min-height:4.5rem;padding:.8rem .9rem;gap:.85rem}
   .pcard .ic{width:2.75rem;height:2.75rem}
   .pcard .t{font-size:1.1875rem}
-  .pcard .s{display:none}
-  .pcard .body{display:flex;flex-direction:column;min-width:0}
-  .pcard .go{margin:0 0 0 auto}
   .pcard .go span{display:none}
 }
 
-/* guide */
-.guide{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,3vw,2rem);display:grid;gap:1.25rem}
-.guide-top{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
-.steps-dots{display:flex;gap:.4rem;align-items:center;font-size:.9375rem;color:var(--ink-2)}
-.steps-dots i{width:2rem;height:.4rem;border-radius:4px;background:var(--line);display:block}
-.steps-dots i.on{background:var(--green)}
-.choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:.6rem}
-.choice{display:flex;align-items:center;gap:.75rem;min-height:3.5rem;padding:.75rem 1rem;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);cursor:pointer;font-weight:700;text-align:left;font-size:1.0625rem}
-.choice:hover{border-color:var(--green)}
-.choice .ico{color:var(--green)}
-.result{display:grid;gap:1rem}
-.result-main{display:grid;gap:.75rem;padding:1.25rem;border-radius:12px;background:var(--butter)}
-.linkbtn{background:none;border:0;padding:.5rem 0;color:var(--green);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px;min-height:44px}
+/* how CB9 helps */
+.roles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;counter-reset:r}
+@media (max-width:860px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.roles{grid-template-columns:1fr}}
+.role{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1.1rem;display:grid;gap:.35rem;align-content:start}
+.role b{font-family:var(--display);font-stretch:84%;font-size:1.3rem;font-weight:800;color:var(--green)}
+.role p{font-size:1rem;color:var(--ink-2)}
+.cant{margin-top:1rem;font-size:1rem;color:var(--ink-2);max-width:44rem}
 
-/* featured + events */
-.split{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(1rem,3vw,2rem);align-items:start}
+/* events */
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1rem,3vw,2rem);align-items:start}
 @media (max-width:860px){.split{grid-template-columns:1fr}}
-.feature{background:var(--ink);color:var(--paper);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.feature{background:var(--ink);color:var(--paper);border-radius:var(--r);overflow:hidden}
 .feature .awning{--green-fill:var(--marigold);--awning-b:var(--ink)}
-.feature .in{padding:1.5rem clamp(1.25rem,3vw,2rem) 1.75rem;display:grid;gap:.9rem}
+.feature .in{padding:1.25rem clamp(1.25rem,3vw,1.75rem) 1.6rem;display:grid;gap:.8rem}
 .feature .eyebrow{color:var(--marigold)}
-.feature h3{font-size:clamp(1.75rem,3.4vw,2.25rem);font-stretch:78%;font-weight:800}
-.feature p{color:var(--paper);opacity:.88}
-.feature .verify{background:transparent;color:var(--marigold);border-color:var(--marigold)}
+.feature h3{font-size:clamp(1.6rem,3.2vw,2rem);font-stretch:78%;font-weight:800}
+.feature p{opacity:.9}
+.feature .ph{background:transparent;color:var(--marigold);border-color:var(--marigold)}
 .evlist{display:grid;gap:.6rem}
-.ev{display:grid;grid-template-columns:4.25rem 1fr;gap:1rem;align-items:start;padding:.9rem;background:var(--surface);border:1.5px solid var(--line);border-radius:12px}
+.ev{display:grid;grid-template-columns:4rem 1fr;gap:1rem;align-items:center;padding:.85rem;background:var(--surface);border:1.5px solid var(--line);border-radius:12px}
 .date{display:grid;place-items:center;border-radius:10px;background:var(--mint);color:var(--green);padding:.4rem 0;font-family:var(--display);line-height:1}
 .date small{font-size:.8125rem;font-weight:800;letter-spacing:.08em;font-stretch:85%}
-.date b{font-size:1.75rem;font-weight:900;font-stretch:80%}
-.ev h3{font-size:1.1875rem}
-.ev .meta{display:flex;flex-wrap:wrap;gap:.25rem .75rem;font-size:.9375rem;color:var(--ink-2);margin-top:.3rem}
-.tag{display:inline-flex;align-items:center;font-size:.8125rem;font-weight:700;padding:.15rem .55rem;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--ink-2)}
-details.more summary{cursor:pointer;font-weight:700;color:var(--green);margin-top:.4rem;font-size:.9375rem;min-height:32px;display:flex;align-items:center}
-details.more p{font-size:1rem;margin-top:.35rem}
+.date b{font-size:1.6rem;font-weight:900;font-stretch:80%}
+.ev h3{font-size:1.15rem}
+.ev .meta{display:flex;flex-wrap:wrap;gap:.25rem .75rem;font-size:.9375rem;color:var(--ink-2);margin-top:.25rem}
 
-/* local tiles */
-.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.875rem}
-@media (max-width:960px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.tiles{grid-template-columns:1fr}}
-.tile{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem;border-radius:var(--r);background:var(--surface);border:1.5px solid var(--line);text-decoration:none;color:var(--ink)}
-.tile:hover{border-color:var(--green)}
-.tile h3{font-size:1.3rem}
-.tile p{font-size:1rem;color:var(--ink-2)}
-.tile .go{margin-top:auto;padding-top:.5rem;color:var(--green);font-weight:700;font-size:.9375rem}
-
-/* what we heard */
-.heard{display:grid;gap:1rem;counter-reset:h}
-.hitem{display:grid;grid-template-columns:3.25rem 1fr 1fr;gap:1rem 1.5rem;padding:1.35rem;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r)}
-.hnum{font-family:var(--display);font-weight:900;font-stretch:75%;font-size:2.75rem;line-height:.9;color:var(--green)}
-.hitem h4{font-family:var(--display);font-stretch:85%;text-transform:uppercase;letter-spacing:.08em;font-size:.8125rem;color:var(--ink-2);margin-bottom:.35rem}
-.hitem .said{font-size:1.1875rem;font-weight:700;line-height:1.4}
-.hitem .doing{font-size:1.0625rem}
-.tracker{grid-column:2 / -1;display:grid;gap:.5rem}
-.track{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem}
-.track span{height:.5rem;border-radius:4px;background:var(--line)}
-.track span.on{background:var(--green)}
-.track-labels{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;font-size:.8125rem;color:var(--ink-2)}
-.track-labels .cur{color:var(--ink);font-weight:700}
-.status-line{font-size:1rem}
-@media (max-width:760px){.hitem{grid-template-columns:2.5rem 1fr}.hitem .col2{grid-column:2}.tracker{grid-column:1 / -1}.hnum{font-size:2.25rem}.track-labels{font-size:.75rem}}
+/* what we're hearing */
+.heard{display:grid;gap:.75rem}
+.hitem{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:1.25rem 1.35rem;display:grid;gap:.75rem}
+.hitem h3{font-size:1.4rem;font-stretch:82%;font-weight:800}
+.hrow{display:grid;grid-template-columns:11.5rem 1fr;gap:.25rem 1rem;font-size:1.0625rem}
+.hrow dt{font-weight:700;color:var(--ink-2);font-size:.9375rem;padding-top:.1rem}
+.hrow dd{margin:0}
+@media (max-width:600px){.hrow{grid-template-columns:1fr}.hrow dd{margin-bottom:.4rem}}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-weight:700}
+.pips{display:inline-flex;gap:.2rem}
+.pips i{width:1.1rem;height:.45rem;border-radius:3px;background:var(--line)}
+.pips i.on{background:var(--green)}
 
 /* bands */
-.band{border-radius:calc(var(--r) + 4px);padding:clamp(1.5rem,4vw,2.75rem);display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem;align-items:center}
-@media (max-width:820px){.band{grid-template-columns:1fr}}
+.band{border-radius:calc(var(--r) + 4px);padding:clamp(1.5rem,4vw,2.5rem);display:grid;gap:1rem}
+.band.tell{background:var(--green-fill);color:var(--on-green)}
+.band.tell .eyebrow{color:var(--on-green);opacity:.85}
 .band.join{background:var(--marigold);color:var(--on-marigold)}
 .band.join .eyebrow{color:var(--on-marigold)}
-.band.ask{background:var(--green-fill);color:var(--on-green)}
-.band.ask .eyebrow{color:var(--on-green);opacity:.85}
-.band h2{font-stretch:78%}
-.band p{font-size:1.125rem}
-.band ul{margin:0;padding:0;list-style:none;display:grid;gap:.5rem}
-.band li{display:flex;gap:.6rem;align-items:flex-start;font-weight:700}
-.band li .ico{width:1.3em;height:1.3em;margin-top:.1em}
+.band h2{font-stretch:78%;max-width:34rem}
+.band p{max-width:36rem}
 
 /* pathway page */
-.crumbs{font-size:1rem;padding-top:1.25rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.crumbs{font-size:1rem;padding-top:1.25rem}
 .crumbs a{font-weight:700}
-.phead{display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start;padding-block:1rem 1.5rem}
-.phead .ic{display:grid;place-items:center;width:4.5rem;height:4.5rem;border-radius:16px;background:var(--mint);color:var(--green)}
-.phead .ic .ico{width:2.4rem;height:2.4rem}
-.phead.urgent .ic{background:var(--blush);color:var(--brick)}
-@media (max-width:600px){.phead{grid-template-columns:1fr}.phead .ic{width:3.5rem;height:3.5rem}}
-.jump{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:.5rem;scrollbar-width:thin}
-.jump button{flex:none;min-height:44px;padding:.45rem .9rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:700;font-size:.9375rem;cursor:pointer;white-space:nowrap}
-.jump button:hover{border-color:var(--green);color:var(--green)}
-.playout{display:grid;grid-template-columns:minmax(0,1fr) 18rem;gap:clamp(1.5rem,4vw,3rem);align-items:start;padding-bottom:4rem}
-@media (max-width:960px){.playout{grid-template-columns:1fr}.aside{display:none}}
-.aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 5.5rem);display:grid;gap:1rem}
-.aside .box{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:1.15rem;display:grid;gap:.6rem}
-.aside .box button{background:none;border:0;text-align:left;padding:.35rem 0;color:var(--ink);font-weight:700;cursor:pointer;font-size:1rem}
-.aside .box button:hover{color:var(--green)}
-.aside .askbox{background:var(--green-fill);color:var(--on-green);border-color:var(--green-fill)}
-.psec{display:grid;gap:1rem;padding-block:1.75rem;border-top:1px solid var(--line);scroll-margin-top:6rem}
-.psec:first-child{border-top:0;padding-top:.5rem}
-.psec > h2{font-size:clamp(1.5rem,3vw,2rem)}
-.urgent-banner{display:flex;gap:.9rem;align-items:center;padding:1rem 1.25rem;border-radius:12px;background:var(--brick-fill);color:var(--on-brick);font-weight:700;font-size:1.1875rem;margin-bottom:1.25rem}
-.urgent-banner .ico{width:1.75rem;height:1.75rem}
-.start{background:var(--butter);border-radius:var(--r);padding:clamp(1.25rem,3vw,1.75rem);display:grid;gap:.75rem}
-.start .label{justify-self:start;font-family:var(--display);font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.08em;font-size:.9375rem;background:var(--marigold);color:var(--on-marigold);padding:.3rem .7rem;border-radius:6px}
-.start p{font-size:clamp(1.25rem,2.4vw,1.5rem);line-height:1.4;font-weight:700}
-ol.do{list-style:none;margin:0;padding:0;display:grid;gap:.25rem;counter-reset:s}
-ol.do li{counter-increment:s;display:grid;grid-template-columns:2.75rem 1fr;gap:1rem;padding:.9rem 0;border-bottom:1px dashed var(--line)}
+.phead{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:center;padding-block:.9rem 1.25rem}
+.phead .ic{display:grid;place-items:center;width:4rem;height:4rem;border-radius:16px;background:var(--mint);color:var(--green)}
+.phead .ic .ico{width:2.2rem;height:2.2rem}
+.phead h1{font-size:clamp(2rem,5vw,2.9rem)}
+@media (max-width:520px){.phead{grid-template-columns:1fr}.phead .ic{width:3.25rem;height:3.25rem}}
+.psec{display:grid;gap:.9rem;padding-block:1.5rem;border-top:1px solid var(--line)}
+.psec > h2{font-size:clamp(1.4rem,2.8vw,1.75rem)}
+.first{background:var(--butter);border-radius:var(--r);padding:clamp(1.15rem,3vw,1.6rem);display:grid;gap:.6rem}
+.first .label{justify-self:start;font-family:var(--display);font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.08em;font-size:.9375rem;background:var(--marigold);color:var(--on-marigold);padding:.3rem .7rem;border-radius:6px}
+.first p{font-size:clamp(1.25rem,2.4vw,1.45rem);line-height:1.38;font-weight:700}
+ol.do{list-style:none;margin:0;padding:0;display:grid;counter-reset:s}
+ol.do li{counter-increment:s;display:grid;grid-template-columns:2.5rem 1fr;gap:.9rem;padding:.7rem 0;border-bottom:1px dashed var(--line);align-items:start}
 ol.do li:last-child{border-bottom:0}
-ol.do li::before{content:counter(s);display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--green-fill);color:var(--on-green);font-family:var(--display);font-weight:900;font-size:1.25rem}
-ol.do b{display:block;font-size:1.1875rem;margin-bottom:.15rem}
-ol.do span{color:var(--ink-2)}
-.res{display:grid;gap:.6rem}
-.rcard{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1rem 1.15rem;display:grid;gap:.5rem}
-.rcard .top{display:flex;justify-content:space-between;align-items:start;gap:.75rem;flex-wrap:wrap}
-.rcard h3{font-size:1.25rem}
-.rcard .org{font-size:.875rem;color:var(--ink-2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:.2rem}
-.rcard .what{font-size:1.0625rem}
-.rcard details summary{cursor:pointer;color:var(--green);font-weight:700;font-size:1rem;min-height:40px;display:flex;align-items:center}
-.rcard details[open] summary{margin-bottom:.25rem}
-.rcard .bring{font-size:1rem;color:var(--ink-2)}
-.rcard .actions{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
-.expect{display:grid;grid-template-columns:1.2fr 1fr;gap:1.25rem}
-@media (max-width:700px){.expect{grid-template-columns:1fr}}
-.expect .txt{display:grid;gap:.75rem}
-.ready{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem}
-.ready h3{font-size:1.125rem;margin-bottom:.5rem}
-.checks{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
-.checks li{display:grid;grid-template-columns:1.4rem 1fr;gap:.5rem;font-size:1.0625rem}
-.checks .ico{width:1.3rem;height:1.3rem;color:var(--green);margin-top:.15rem}
-.stuck{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
-.stuck li{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;align-items:start}
-.stuck .ico{color:var(--green);width:1.4rem;height:1.4rem;margin-top:.15rem}
-.cb9grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
-@media (max-width:820px){.cb9grid{grid-template-columns:1fr}}
-.cbcol{border-radius:12px;padding:1.1rem;display:grid;gap:.6rem;align-content:start;border:1.5px solid var(--line);background:var(--surface)}
-.cbcol h3{display:flex;gap:.5rem;align-items:center;font-size:1.125rem}
-.cbcol h3 .ico{width:1.5rem;height:1.5rem}
-.cbcol.yes{background:var(--mint);border-color:transparent}
-.cbcol.yes h3{color:var(--green)}
-.cbcol.no h3{color:var(--brick)}
-.cbcol ul{margin:0;padding-left:1.15rem;display:grid;gap:.4rem;font-size:1.0625rem}
-.related{display:flex;flex-wrap:wrap;gap:.5rem}
-.related a{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border:1.5px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-weight:700;background:var(--surface)}
-.related a .ico{color:var(--green);width:1.25em;height:1.25em}
+ol.do li::before{content:counter(s);display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:50%;background:var(--green-fill);color:var(--on-green);font-family:var(--display);font-weight:900;font-size:1.15rem}
+.best{background:var(--surface);border:2px solid var(--green);border-radius:var(--r);padding:1.2rem 1.3rem;display:grid;gap:.6rem}
+.best .org{font-size:.875rem;color:var(--ink-2);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.best h3{font-size:1.5rem;font-stretch:82%;font-weight:800}
+.alt{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.alt li{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;align-items:start}
+.alt .ico{color:var(--green);width:1.4rem;height:1.4rem;margin-top:.15rem}
+.still{background:var(--green-fill);color:var(--on-green);border-radius:var(--r);padding:clamp(1.25rem,3.5vw,1.75rem);display:grid;gap:1rem}
+.still h2{font-size:clamp(1.6rem,3.4vw,2.1rem);font-stretch:78%}
+.can{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;font-size:1.0625rem}
+.can li{display:grid;grid-template-columns:1.5rem 1fr;gap:.6rem;align-items:start}
+.can .ico{width:1.35rem;height:1.35rem;margin-top:.15rem}
+.can b{display:block;font-size:.875rem;text-transform:uppercase;letter-spacing:.06em;opacity:.85}
+.helpful{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;padding-block:1.5rem;border-top:1px solid var(--line);font-weight:700}
+.helpful button{min-height:44px;padding:.4rem 1.1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer}
+.helpful button:hover{border-color:var(--green)}
 .reviewed{font-size:.9375rem;color:var(--ink-2)}
-.mobile-ask{display:none}
-@media (max-width:960px){
-  .mobile-ask{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom,0px));gap:.75rem;align-items:center;justify-content:space-between}
-  .mobile-ask span{font-size:.9375rem;font-weight:700}
-  body.has-mobile-ask main{padding-bottom:5rem}
-}
+.chiplinks{display:flex;flex-wrap:wrap;gap:.5rem}
+.chiplinks a{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border:1.5px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-weight:700;background:var(--surface)}
+.chiplinks a .ico{color:var(--green);width:1.25em;height:1.25em}
+
+/* local page */
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+@media (max-width:860px){.cards3{grid-template-columns:1fr}}
+.lcard{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1.2rem;display:grid;gap:.5rem;align-content:start}
+.lcard p{font-size:1.0625rem;color:var(--ink-2)}
+.lcard .btn{justify-self:start;margin-top:.35rem}
+
+/* persistent Tell CB9 bar */
+.tellbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 20px -14px rgba(0,0,0,.4)}
+.tellbar .wrap{display:flex;gap:.75rem;align-items:center;justify-content:space-between;padding-block:.6rem calc(.6rem + env(safe-area-inset-bottom,0px))}
+.tellbar span{font-weight:700;font-size:1rem}
+@media (max-width:420px){.tellbar span{font-size:.9375rem}}
 
 /* forms */
-.form{display:grid;gap:1.25rem;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,3.5vw,2.25rem)}
-fieldset{border:0;padding:0;margin:0;display:grid;gap:1rem;min-width:0}
-legend{font-family:var(--display);font-weight:800;font-stretch:85%;font-size:1.25rem;margin-bottom:.75rem;padding:0}
+.form{display:grid;gap:1.15rem;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,3.5vw,2rem)}
 .f{display:grid;gap:.4rem;min-width:0}
 .f label,.f .lbl{font-weight:700;font-size:1.0625rem}
 .f .hint{font-size:.9375rem;color:var(--ink-2)}
-.f input[type=text],.f input[type=email],.f input[type=tel],.f input[type=url],.f select,.f textarea{width:100%;min-height:3.25rem;padding:.7rem .9rem;border:2px solid var(--line);border-radius:10px;background:var(--paper);font-size:1.0625rem}
-.f textarea{min-height:8rem;resize:vertical}
-.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--mint)}
+.f input[type=text],.f input[type=email],.f textarea{width:100%;min-height:3.25rem;padding:.7rem .9rem;border:2px solid var(--line);border-radius:10px;background:var(--paper);font-size:1.0625rem}
+.f textarea{min-height:7rem;resize:vertical}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--mint)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media (max-width:640px){.row2{grid-template-columns:1fr}}
 .opt{color:var(--ink-2);font-weight:400;font-size:.9375rem}
@@ -335,96 +245,46 @@ legend{font-family:var(--display);font-weight:800;font-stretch:85%;font-size:1.2
 .chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
 .chip span{display:inline-flex;align-items:center;gap:.4rem;min-height:2.875rem;padding:.55rem 1rem;border:2px solid var(--line);border-radius:999px;background:var(--paper);font-weight:700;font-size:1rem}
 .chip input:checked + span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.chip input:focus-visible + span{outline:3px solid var(--focus);outline-offset:2px}
 .chip input:checked + span::before{content:"✓"}
+.chip input:focus-visible + span{outline:3px solid var(--focus);outline-offset:2px}
 .check{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;align-items:start;font-size:1.0625rem;cursor:pointer}
 .check input{width:1.4rem;height:1.4rem;margin:.15rem 0 0;accent-color:var(--green)}
-.drop{border:2px dashed var(--line);border-radius:12px;padding:1.25rem;text-align:center;display:grid;gap:.4rem;background:var(--paper);position:relative}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:1rem;text-align:center;display:grid;gap:.3rem;background:var(--paper);position:relative}
 .drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .drop.has{border-color:var(--green);background:var(--mint)}
 .formnote{font-size:.9375rem;color:var(--ink-2)}
-.done{display:grid;gap:1rem;background:var(--mint);border-radius:var(--r);padding:clamp(1.25rem,4vw,2.25rem)}
+.done{display:grid;gap:1rem;background:var(--mint);border-radius:var(--r);padding:clamp(1.25rem,4vw,2rem)}
 .done h2{color:var(--green)}
 .done ol{margin:0;padding-left:1.25rem;display:grid;gap:.4rem}
 .err{color:var(--brick);font-weight:700;font-size:1rem}
 
-/* directory + board */
-.filters{display:grid;gap:.9rem;margin-bottom:1.25rem}
-.filterrow{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.25rem;align-items:center}
-.filterrow .k{font-weight:700;font-size:.9375rem;color:var(--ink-2);flex:none;min-width:6.5rem}
-.fbtn{flex:none;min-height:44px;padding:.45rem .9rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:700;font-size:.9375rem;cursor:pointer;white-space:nowrap}
-.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.75rem}
-.biz{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1.1rem;display:grid;gap:.55rem;align-content:start}
-.biz .hd{display:grid;grid-template-columns:3rem 1fr;gap:.75rem;align-items:center}
-.ava{display:grid;place-items:center;width:3rem;height:3rem;border-radius:10px;background:var(--butter);color:var(--ink);font-family:var(--display);font-weight:900;font-stretch:80%;font-size:1.2rem}
-.biz h3{font-size:1.15rem}
-.biz .sub{font-size:.9375rem;color:var(--ink-2)}
-.biz .tags{display:flex;flex-wrap:wrap;gap:.35rem}
-.biz p{font-size:1rem}
-.count{font-size:1rem;color:var(--ink-2);margin-bottom:.75rem}
-.board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
-@media (max-width:700px){.board{grid-template-columns:1fr}}
-.post{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1rem 1.1rem;display:grid;gap:.45rem}
-.post .kind{justify-self:start;font-family:var(--display);font-weight:800;font-stretch:82%;text-transform:uppercase;letter-spacing:.07em;font-size:.8125rem;padding:.2rem .55rem;border-radius:6px}
-.post.offer .kind{background:var(--mint);color:var(--green)}
-.post.seek .kind{background:var(--butter);color:var(--verify-ink)}
-.post p{font-size:1.0625rem}
-.post .by{font-size:.9375rem;color:var(--ink-2)}
-.involve{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
-@media (max-width:860px){.involve{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.involve{grid-template-columns:1fr}}
-.inv{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1.15rem;display:grid;gap:.5rem;align-content:start}
-.inv h3{font-size:1.2rem}
-.inv p{font-size:1rem;color:var(--ink-2)}
-.inv .btn{justify-self:start;margin-top:.25rem}
-.subnav{display:flex;gap:.5rem;overflow-x:auto;padding-block:.25rem .75rem}
-.subnav button{flex:none;min-height:44px;padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer;white-space:nowrap}
-
 /* brunch */
 .brunch-hero{background:var(--ink);color:var(--paper)}
 .brunch-hero .awning{--green-fill:var(--marigold);--awning-b:var(--paper)}
-.brunch-hero .wrap{padding-block:2rem 2.5rem;display:grid;gap:1.1rem}
-.brunch-hero .kicker{font-family:var(--display);font-weight:900;font-stretch:72%;text-transform:uppercase;font-size:clamp(2.6rem,10vw,5.5rem);line-height:.9;letter-spacing:-.01em}
-.brunch-hero .kicker em{font-style:normal;color:var(--marigold);display:block}
-.brunch-hero .tag4{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(1.4rem,4vw,2rem)}
+.brunch-hero .wrap{padding-block:1.75rem 2.25rem;display:grid;gap:1rem}
+.kicker{font-family:var(--display);font-weight:900;font-stretch:72%;text-transform:uppercase;font-size:clamp(2.6rem,10vw,5.25rem);line-height:.9}
+.kicker em{font-style:normal;color:var(--marigold);display:block}
+.tag4{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:clamp(1.4rem,4vw,2rem)}
 .brunch-hero p{font-size:1.1875rem;max-width:36rem;opacity:.92}
 .bigbtns{display:grid;gap:.75rem;grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:760px){.bigbtns{grid-template-columns:1fr}}
-.bigbtn{display:flex;align-items:center;gap:.9rem;padding:1.15rem 1.25rem;border-radius:var(--r);text-decoration:none;font-weight:800;font-size:1.25rem;font-family:var(--display);font-stretch:85%;min-height:5rem;border:2px solid var(--line);background:var(--surface);color:var(--ink);line-height:1.15}
+.bigbtn{display:flex;align-items:center;gap:.9rem;padding:1.1rem 1.2rem;border-radius:var(--r);text-decoration:none;font-weight:800;font-size:1.25rem;font-family:var(--display);font-stretch:85%;min-height:4.75rem;border:2px solid var(--line);background:var(--surface);color:var(--ink);line-height:1.15;cursor:pointer;text-align:left}
 .bigbtn .ico{width:2rem;height:2rem;color:var(--green)}
 .bigbtn.primary{background:var(--marigold);border-color:var(--marigold);color:var(--on-marigold)}
 .bigbtn.primary .ico{color:var(--on-marigold)}
-.savetip{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;background:var(--butter);border-radius:12px;padding:1rem 1.15rem}
-.savetip .ico{width:1.75rem;height:1.75rem;color:var(--verify-ink)}
-.savetip p{font-size:1rem}
-
-/* about */
-.prose{display:grid;gap:1rem;max-width:44rem}
-.prose h2{margin-top:1rem}
-.contact{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.75rem}
-.contact .c{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1rem;display:grid;gap:.3rem}
-.contact .c b{font-size:.875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.savetip{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;background:var(--butter);border-radius:12px;padding:1rem 1.15rem;font-size:1rem}
+.savetip .ico{width:1.6rem;height:1.6rem;color:var(--verify-ink)}
 
 /* footer */
-footer.site{background:var(--ink);color:var(--paper);margin-top:0}
+footer.site{background:var(--ink);color:var(--paper)}
 footer.site .awning{--green-fill:var(--green);--awning-b:var(--ink);transform:scaleY(-1);height:22px}
-footer.site .wrap{padding-block:2.5rem 3rem;display:grid;gap:2rem}
-.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem}
-@media (max-width:820px){.fgrid{grid-template-columns:1fr}}
+footer.site .wrap{padding-block:2.25rem 7rem;display:grid;gap:1.25rem;font-size:1rem}
 footer.site a{color:var(--paper)}
-footer.site h3{font-size:1rem;text-transform:uppercase;letter-spacing:.08em;font-stretch:85%;color:var(--marigold);margin-bottom:.6rem}
-footer.site ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
-.fine{font-size:.9375rem;opacity:.85;display:grid;gap:.5rem;border-top:1px solid rgba(255,255,255,.18);padding-top:1.25rem;max-width:56rem}
-footer.site .verify{background:transparent;color:var(--marigold);border-color:var(--marigold)}
+footer.site .links{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-weight:700}
+footer.site .fine{opacity:.85;display:grid;gap:.5rem;border-top:1px solid rgba(255,255,255,.18);padding-top:1.1rem;max-width:52rem;font-size:.9375rem}
+footer.site .ph,footer.site .verify{background:transparent;color:var(--marigold);border-color:var(--marigold)}
 
-/* order-sensitive fixes */
-.pcard .body{display:flex;flex-direction:column;gap:.35rem;min-width:0}
-nav.main a,.btn{white-space:nowrap}
-.band .btn,.bigbtn,.choice{white-space:normal}
-@media (max-width:1100px){nav.main{display:none}.menu-btn{display:inline-flex}.hdr-ask .lbl-long{display:none}}
-@media (max-width:960px){.aside{display:none}}
-@media (max-width:600px){.ribbon{font-size:.875rem}}
+.still .btn,.band .btn,.helpful .btn{white-space:normal}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -434,8 +294,8 @@ nav.main a,.btn{white-space:nowrap}
 
 <div class="ribbon" role="note">
   <div class="wrap">
-    <span><strong>Prototype for committee review.</strong> Anything marked <span class="verify">Verify</span> needs confirmation before launch.</span>
-    <a href="#brunch">Preview the brunch QR landing →</a>
+    <span><strong>Prototype for the December brunch.</strong> <span class="verify">Verify</span> = CB9 to confirm before launch.</span>
+    <a href="#brunch">Brunch QR view →</a>
   </div>
 </div>
 
@@ -446,88 +306,32 @@ nav.main a,.btn{white-space:nowrap}
       <span><b>Small Business Playbook</b><small>Brooklyn Community Board 9</small></span>
     </a>
     <nav class="main" aria-label="Main">
-      <a href="#help" data-nav="help">Get help</a>
+      <a href="#home" data-nav="home">Get help</a>
       <a href="#local" data-nav="local">Doing Business in CB9</a>
-      <a href="#events" data-nav="events">Events</a>
-      <a href="#about" data-nav="about">About</a>
     </nav>
-    <div class="hdr-actions">
-      <button class="iconbtn" type="button" data-lang aria-expanded="false" aria-controls="langpanel" title="Language">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span id="langcode">EN</span><span class="sr">Change language</span>
-      </button>
-      <a class="btn btn-primary btn-sm hdr-ask" href="#ask">Ask CB9<span class="lbl-long">&nbsp;for help</span></a>
-      <button class="iconbtn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="sheet">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span>
-      </button>
-    </div>
-  </div>
-  <div class="langpanel" id="langpanel" hidden>
-    <div class="wrap">
-      <strong>Language:</strong>
-      <button type="button" aria-pressed="true" data-setlang="EN">English</button>
-      <button type="button" aria-pressed="false" data-setlang="ES">Español</button>
-      <button type="button" aria-pressed="false" data-setlang="HT">Kreyòl Ayisyen</button>
-      <button type="button" aria-pressed="false" data-setlang="FR">Français</button>
-      <span class="muted" style="font-size:1rem">Translations coming. <span class="verify">Verify</span> CB9 to confirm which languages.</span>
-    </div>
-  </div>
-  <div class="sheet" id="sheet" hidden>
-    <nav class="wrap" aria-label="Mobile">
-      <a href="#home">Home <span aria-hidden="true">→</span></a>
-      <a href="#help">Get help with a problem <span aria-hidden="true">→</span></a>
-      <a href="#local">Doing Business in CB9 <span aria-hidden="true">→</span></a>
-      <a href="#events">Events <span aria-hidden="true">→</span></a>
-      <a href="#join">Join the Local Business Network <span aria-hidden="true">→</span></a>
-      <a href="#ask">Ask CB9 for help <span aria-hidden="true">→</span></a>
-      <a href="#about">About &amp; contact <span aria-hidden="true">→</span></a>
-    </nav>
+    <a class="btn btn-primary btn-sm" href="#tell">Tell CB9</a>
   </div>
   <div class="awning" aria-hidden="true"></div>
 </header>
 
 <main id="main" tabindex="-1"></main>
 
-<div class="mobile-ask" id="mobileAsk" hidden>
-  <span>Stuck? A real person can help.</span>
-  <a class="btn btn-primary btn-sm" href="#ask" data-ask-from-path>Ask CB9</a>
+<div class="tellbar" id="tellbar">
+  <div class="wrap">
+    <span>Stuck? Tell CB9 what you’re dealing with.</span>
+    <a class="btn btn-accent btn-sm" href="#tell" id="tellbarBtn">Tell CB9</a>
+  </div>
 </div>
 
 <footer class="site">
   <div class="awning" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="fgrid">
-      <div class="stack" style="gap:.75rem">
-        <div class="brand" style="color:var(--paper)">
-          <span class="mark">CB9</span>
-          <span><b>Small Business Playbook</b><small style="color:var(--paper);opacity:.8">Economic Development Committee</small></span>
-        </div>
-        <p style="font-size:1rem;opacity:.9">Brooklyn Community Board 9 serves Crown Heights South, Prospect Lefferts Gardens and Wingate. <span class="verify">Verify</span></p>
-        <p style="font-size:1rem;opacity:.9">District office: <span class="ph">[address]</span> · <span class="ph">[phone]</span> · <span class="ph">[email]</span></p>
-      </div>
-      <div>
-        <h3>Get help</h3>
-        <ul>
-          <li><a href="#help">All topics</a></li>
-          <li><a href="#help-urgent">Something urgent happened</a></li>
-          <li><a href="#help-unsure">Not sure where to start</a></li>
-          <li><a href="#ask">Ask the committee</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Local</h3>
-        <ul>
-          <li><a href="#local">Doing Business in CB9</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#join">Join the network</a></li>
-          <li><a href="#about">About &amp; contact</a></li>
-        </ul>
-      </div>
-    </div>
+    <div class="links"><a href="#home">Get help</a><a href="#local">Doing Business in CB9</a><a href="#tell">Tell CB9</a></div>
+    <p>CB9 Economic Development Committee · Crown Heights South, Prospect Lefferts Gardens, Wingate <span class="verify">Verify</span><br>District office: <span class="ph">[address]</span> · <span class="ph">[phone]</span> · <span class="ph">[email]</span></p>
     <div class="fine">
-      <p><strong>CB9 is a volunteer, advisory Community Board.</strong> We don’t issue permits or licenses, inspect businesses, or set or cancel fines. This site explains official resources in plain language and links to them. Always confirm details with the agency.</p>
-      <p>Help from CB9 is always free. Be careful with anyone who charges you to fill out a free City or State form.</p>
-      <p>In an emergency, call 911. For City services and questions, call 311.</p>
-      <p>Content last reviewed: <span class="ph">[date]</span> · <a href="#about">Accessibility &amp; languages</a> · Logo shown is a placeholder. <span class="verify">Verify</span></p>
+      <p><strong>CB9 is a volunteer, advisory Community Board.</strong> We don’t issue permits, inspect businesses, or set or cancel fines. This site points you to the official resources that do, and always confirm details with them.</p>
+      <p>Emergency? Call 911. City services and questions: call 311. Help from CB9 is always free.</p>
+      <p>Last reviewed <span class="ph">[date]</span> · Logo is a placeholder.</p>
     </div>
   </div>
 </footer>
@@ -538,686 +342,310 @@ nav.main a,.btn{white-space:nowrap}
 
 /* ---------- icons ---------- */
 const I = {
-  open:'<path d="M3 9l1.6-5h14.8L21 9"/><path d="M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0"/><path d="M5 11.6V20h14v-8.4"/><path d="M10 20v-5h4v5"/>',
+  lease:'<circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16.5 6.5l2.5 2.5M14 9l2 2"/>',
   city:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4"/><path d="M8.5 9.5h7M8.5 13h7M8.5 16.5h4"/>',
   money:'<ellipse cx="9" cy="6.5" rx="5" ry="2.5"/><path d="M4 6.5v4c0 1.4 2.2 2.5 5 2.5"/><path d="M4 10.5v4c0 1.4 2.2 2.5 5 2.5"/><ellipse cx="15" cy="12.5" rx="5" ry="2.5"/><path d="M10 12.5v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-5"/>',
-  lease:'<circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16.5 6.5l2.5 2.5M14 9l2 2"/>',
-  hiring:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.2" cy="9" r="2.5"/><path d="M16.5 14.1c2.6.4 4.5 2.8 4.5 5.9"/>',
-  grow:'<path d="M3.5 20.5h17"/><path d="M7 20.5v-5M12 20.5v-9M17 20.5V7"/><path d="M14 6.5l3-3 3 3"/>',
+  trash:'<path d="M4 6.5h16M9.5 6.5V4h5v2.5"/><path d="M6 6.5l1 14h10l1-14"/><path d="M10 10.5v6M14 10.5v6"/>',
+  customers:'<path d="M3 9l1.6-5h14.8L21 9"/><path d="M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0"/><path d="M5 11.6V20h14v-8.4"/><path d="M10 20v-5h4v5"/>',
   connect:'<path d="M4 4.5h10a1 1 0 011 1V11a1 1 0 01-1 1H8.5L5 15v-3H4a1 1 0 01-1-1V5.5a1 1 0 011-1z"/><path d="M17.5 8.5H20a1 1 0 011 1V15a1 1 0 01-1 1h-1v3l-3.5-3H11a1 1 0 01-1-1v-.5"/>',
-  urgent:'<path d="M12 3.5l9 16H3z"/><path d="M12 10v4.2M12 17v.3"/>',
   unsure:'<circle cx="12" cy="12" r="9"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1z"/>',
-  cb9:'<path d="M3 10v4h3l8 4.5v-13L6 10z"/><path d="M17.5 9.2a4 4 0 010 5.6M20 6.8a7.5 7.5 0 010 10.4"/>',
   arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
   ext:'<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',
   check:'<path d="M4.5 12.5l4.5 4.5L19.5 6.5"/>',
   x:'<path d="M6 6l12 12M18 6L6 18"/>',
   route:'<path d="M5 19c3-6 11-1 14-8"/><circle cx="5" cy="19" r="1.8"/><path d="M15 5h4v4"/>',
-  search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/>',
-  pin:'<path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
   bookmark:'<path d="M6 3.5h12v17l-6-4.5-6 4.5z"/>',
-  phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/>',
-  calendar:'<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  megaphone:'<path d="M3 10v4h3l8 4.5v-13L6 10z"/><path d="M17.5 9.2a4 4 0 010 5.6M20 6.8a7.5 7.5 0 010 10.4"/>',
   people:'<circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2.5 20c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5M10.5 20c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5"/>'
 };
-const ico = (k, cls) => `<svg class="ico${cls?' '+cls:''}" viewBox="0 0 24 24" aria-hidden="true">${I[k]||''}</svg>`;
-const V = '<span class="verify" title="Needs confirmation before launch">Verify</span>';
+const ico = k => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${I[k]||""}</svg>`;
+const V = '<span class="verify" title="CB9 to confirm before launch">Verify</span>';
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ---------- official resources (curated; every link needs CB9 verification) ---------- */
-const R = {
-  mycity:{name:"MyCity Business",org:"City of New York",what:"The City’s main site for starting and running a business. Shows which licenses and permits your type of business needs.",bring:"Your business type and the address you’re considering.",url:"https://nyc-business.nyc.gov/nycbusiness/"},
-  bsc:{name:"Business Solutions Centers",org:"NYC Small Business Services (SBS)",what:"Free one-on-one advisors for planning, financing, hiring and permits. There’s a center serving Brooklyn.",bring:"A short description of your business and what you’re stuck on.",url:"https://www.nyc.gov/site/sbs/index.page",note:"Brooklyn location and hours"},
-  best:{name:"NYC BEST",org:"City of New York",what:"Help getting through City permits and inspections when opening or changing a storefront, especially food businesses.",bring:"Your address, business type and any permit or job numbers.",url:null,note:"Current program name, scope and link"},
-  nysdos:{name:"Register an LLC or corporation",org:"New York State Department of State",what:"Where you officially form an LLC or corporation in New York.",bring:"Business name, owner information, registered address.",url:"https://dos.ny.gov/"},
-  ein:{name:"Employer Identification Number (EIN)",org:"IRS",what:"Your free federal tax ID number. Apply directly with the IRS. You never need to pay a service for this.",bring:"Owner’s Social Security number or ITIN, business structure.",url:"https://www.irs.gov/"},
-  cert:{name:"Certificate of Authority (sales tax)",org:"NYS Department of Taxation and Finance",what:"Needed before you sell taxable goods or services.",bring:"EIN, business address, start date.",url:"https://www.tax.ny.gov/"},
-  oath:{name:"OATH Hearings Division",org:"NYC Office of Administrative Trials and Hearings",what:"Where many City summonses are heard. Check your hearing date and the ways you can respond, including online or by phone.",bring:"Your summons and any proof (photos, receipts, permits).",url:"https://www.nyc.gov/site/oath/index.page"},
-  dcwp:{name:"Consumer and Worker Protection (DCWP)",org:"City of New York",what:"Licenses for many business types, consumer rules, and employer rules like paid safe and sick leave.",bring:"Your license number, if you have one.",url:"https://www.nyc.gov/site/dca/index.page"},
-  doh:{name:"Food service permits and inspections",org:"NYC Health Department",what:"Permits and inspections for restaurants, cafes, food carts and other food businesses.",bring:"Permit number and your most recent inspection report.",url:"https://www.nyc.gov/site/doh/index.page"},
-  dob:{name:"Department of Buildings",org:"City of New York",what:"Construction permits, signs, certificates of occupancy and building violations.",bring:"Your address and any job or violation numbers.",url:"https://www.nyc.gov/site/buildings/index.page"},
-  comply:{name:"Free help with City rules",org:"NYC Small Business Services (SBS)",what:"Advisors who explain the rules for your type of business so you can avoid fines.",bring:"Any violations or inspection reports you’ve received.",url:null,note:"Current program name and link"},
-  c311:{name:"311",org:"City of New York",what:"Ask questions about any City service, report problems, and get a service request number you can track. Call 311 or use the website or app.",bring:"Address and a short description. Write down your request number.",url:"https://portal.311.nyc.gov/"},
-  funds:{name:"NYC Funds Finder",org:"NYC Small Business Services (SBS)",what:"Answer a few questions and see loans, grants and financing programs that may fit your business.",bring:"Business type, years open, how much you need and what for.",url:null,note:"Direct link"},
-  cdfi:{name:"Community lenders (CDFIs)",org:"Local partners",what:"Mission-driven lenders that often work with businesses banks turn down.",bring:"Tax returns, bank statements, ID, business registration.",url:null,note:"CB9 to list local partners"},
-  sba:{name:"U.S. Small Business Administration",org:"Federal government",what:"Federal loan programs, disaster loans after declared emergencies, and free counseling partners.",bring:"Depends on the program.",url:"https://www.sba.gov/"},
-  grants:{name:"Current grant opportunities",org:"Curated by CB9",what:"A short, checked list of open grants. Grants are rare, so we only list ones that are real and open.",bring:"",url:null,note:"CB9 to curate and keep current"},
-  cla:{name:"Commercial Lease Assistance",org:"NYC Small Business Services (SBS)",what:"Free lawyers for eligible businesses. They can review a lease, help you negotiate a renewal, or advise on a dispute with your landlord.",bring:"Your lease, amendments, and any letters from your landlord.",url:null,note:"Eligibility and link"},
-  legal:{name:"Local legal services organizations",org:"Local partners",what:"Nonprofits that may provide free or low-cost legal help to small businesses.",bring:"",url:null,note:"CB9 to list partners"},
-  wf1:{name:"Workforce1 hiring help",org:"NYC Small Business Services (SBS)",what:"Free recruiting. Tell them what roles you need and they send you pre-screened candidates.",bring:"Job title, duties, pay, schedule.",url:null,note:"Business hiring link"},
-  nysdol:{name:"NYS Department of Labor",org:"New York State",what:"Minimum wage rules, unemployment insurance, and working papers for young workers.",bring:"",url:"https://dol.ny.gov/"},
-  syep:{name:"Summer Youth Employment Program",org:"NYC Department of Youth and Community Development",what:"Host young people for paid summer jobs. The program covers their wages.",bring:"",url:null,note:"Employer sign-up process and wage details"},
-  train:{name:"Training funds for your staff",org:"NYC Small Business Services (SBS)",what:"Programs that may help pay to train new or current employees.",bring:"",url:null,note:"Current program name and eligibility"},
-  courses:{name:"Free business classes",org:"NYC Small Business Services (SBS)",what:"Free classes on marketing, finances, getting online, government contracts and more.",bring:"",url:null,note:"Course calendar link"},
-  mwbe:{name:"M/WBE certification",org:"NYC Small Business Services (SBS)",what:"Certification for minority- and women-owned businesses. It can help you win City contracts.",bring:"Proof of ownership and control, tax returns, business documents.",url:null,note:"Link and current requirements"},
-  passport:{name:"PASSPort",org:"NYC Mayor’s Office of Contract Services",what:"The City’s online system for finding and bidding on City contracts.",bring:"EIN and business details.",url:null,note:"Direct link"},
-  bpl:{name:"Business & Career Center",org:"Brooklyn Public Library",what:"Free business research help, classes and one-on-one sessions at the Central Library.",bring:"",url:"https://www.bklynlibrary.org/",note:"Program name and current offerings"},
-  score:{name:"SCORE mentors",org:"Nonprofit",what:"Free volunteer mentors who have run businesses themselves.",bring:"",url:"https://www.score.org/"},
-  network:{name:"CB9 Local Business Network",org:"CB9 Economic Development Committee",what:"Free. Hear about events, Shop Local campaigns, and ways to work with other businesses in the district.",bring:"",route:"join"},
-  directory:{name:"CB9 local business directory",org:"CB9 Economic Development Committee",what:"An opt-in list of businesses in the district. Find partners, vendors and neighbors.",bring:"",route:"local"},
-  merchants:{name:"Merchant associations",org:"Local partners",what:"Groups of businesses on the same street who work together on events, safety and promotion.",bring:"",url:null,note:"CB9 to list active associations"},
-  bids:{name:"Business Improvement Districts (BIDs)",org:"Local partners",what:"Where a BID exists, it may offer cleaning, promotion and events for its corridor.",bring:"",url:null,note:"Confirm which BIDs serve CB9, if any"},
-  chamber:{name:"Brooklyn Chamber of Commerce",org:"Nonprofit",what:"Borough-wide business association with programs and networking.",bring:"",url:"https://www.ibrooklyn.com/"},
-  e911:{name:"911",org:"Emergency",what:"Fire, injury, crime in progress, or smell of gas. Call 911 right away.",bring:"",url:null,plain:true},
-  emerg:{name:"Emergency help for businesses",org:"NYC Small Business Services (SBS)",what:"The City can help businesses after fires, floods, building emergencies and other disruptions, including connecting you to recovery resources.",bring:"Photos, address, what happened and when.",url:null,note:"Current emergency program name and contact"},
-  utility:{name:"Utility outages",org:"Con Edison (electric) · National Grid (gas)",what:"Report power or gas problems directly to the utility.",bring:"Account number and address.",url:null,note:"Confirm utilities serving CB9 and links"},
-  notify:{name:"Notify NYC",org:"NYC Emergency Management",what:"Free official alerts about emergencies and service disruptions near you.",bring:"",url:"https://a858-nycnotify.nyc.gov/"},
-  intake:{name:"Ask the CB9 Economic Development Committee",org:"CB9",what:"Tell us what’s going on in your own words. A committee member will point you to the right next step.",bring:"",route:"ask"},
-  office:{name:"CB9 district office",org:"CB9",what:"Staff can answer general questions about the Board, meetings and how to get on an agenda.",bring:"",url:null,note:"Address, phone, email and hours"},
-  meetings:{name:"Committee meetings",org:"CB9",what:"Economic Development Committee meetings are open to the public.",bring:"",route:"events"},
-  council:{name:"Your City Council Member",org:"NYC Council",what:"Council offices help constituents with City agency problems.",bring:"",url:"https://council.nyc.gov/",note:"Which districts overlap CB9"}
-};
-
-/* ---------- pathways ---------- */
-const STD_CANNOT = ["Issue permits or licenses","Cancel or reduce fines","Give legal, tax or financial advice"];
+/* ---------- the seven pathways ----------
+   Each follows: What to do first → Your next steps (3–5) → Best official resource (one)
+   → If that doesn't solve it (1–2) → Still stuck? Tell CB9 (with CB9's honest role). */
 const P = [
- {id:"open",icon:"open",title:"I want to open a business",short:"Opening a business",sub:"New business or a new location.",
-  start:"Before you sign a lease or buy equipment, find out which licenses and permits your type of business needs. Then talk to a free advisor.",
-  steps:[["Look up what your business needs","Use MyCity Business to see licenses, permits and registrations for your industry."],["Talk to a free advisor","A Business Solutions Center can walk you through planning, financing and permits at no cost."],["Register your business","Choose a structure (sole proprietor, LLC, etc.), register with New York State, and get a free tax ID from the IRS."],["Check the space before you sign","Make sure the space can legally be used for your business. Get a free lease review first."],["Apply for permits and schedule inspections","Some businesses, like restaurants, need several inspections before opening day."]],
-  res:["mycity","bsc","best","nysdos","ein","cert"],
-  expect:["Most of this help is free. Advisors don’t charge.","Simple retail can open fairly quickly. Food businesses and anything with construction take longer because they need more permits and inspections.","Watch out for websites that charge you to file forms that are free from the City or State."],
-  ready:["What you’ll sell or do","The address you’re considering","Photo ID","A rough budget","Any lease draft (don’t sign yet)"],
-  stuck:["Ask your Business Solutions Center advisor to help you contact the agency.","Call 311 and ask which agency handles the license you need.","Ask CB9. We can help you figure out who to call."],
-  can:["Point you to the right City office or program","Share what other local owners learned opening here","Connect you to the CB9 business network and local merchant groups"],
-  nav:["Help you reach an agency contact if you’ve been stuck","Explain how CB9 reviews liquor licenses, outdoor dining and street events "+V],
-  cannot:["Issue licenses or permits","Speed up or skip inspections","Give legal or tax advice"],
-  related:["money","lease","city"],
-  kw:"open start new launch idea register llc license permit restaurant cafe food cart storefront location ein tax id sales tax"},
- {id:"city",icon:"city",title:"I have a permit, violation or City problem",short:"Permit, violation or City problem",sub:"Fines, inspections, summonses, licenses, or an agency you can’t reach.",
-  start:"Don’t ignore a violation or summons. Find two things on it: which agency sent it and the deadline. Many can be fixed, settled or fought, but only if you respond in time.",
-  steps:[["Find the agency and the deadline","Both are printed on the paper. Take a photo of the whole thing."],["Decide: fix it, pay it, or dispute it","Many summonses go to OATH, the City’s hearing office. You can often respond online or by phone."],["Get free help understanding it","A City advisor can explain what the violation means and how to avoid it next time."],["Fix the problem and keep proof","Photos, receipts and dates help at a hearing or re-inspection."],["Still stuck? Tell CB9","Share the agency, the violation number and what you’ve tried."]],
-  res:["oath","dcwp","doh","dob","comply","c311"],
-  expect:["Hearings are usually short. You can bring photos, receipts and witnesses.","Penalties and options are different for each agency. Some offer reduced penalties if you fix the problem quickly. "+V,"Missing a deadline can lead to a higher penalty, so act early."],
-  ready:["The violation or summons","Your license or permit numbers","Photos showing the problem was fixed","Your lease, if the landlord is responsible"],
-  stuck:["Ask the agency for a supervisor or its small-business contact. "+V,"Contact your City Council Member’s office. They help residents and businesses with agency problems.","Ask CB9 to help escalate. Include your 311 or violation number."],
-  can:["Help you figure out which agency handles your issue","Follow a 311 complaint about a street condition with you"],
-  nav:["Raise repeated problems with agencies at our public meetings","Connect you with an agency contact or an elected official’s office"],
-  cannot:["Cancel, reduce or pay a fine","Represent you at a hearing","Overrule an agency decision"],
-  related:["urgent","cb9","open"],
-  kw:"permit violation fine ticket summons inspection inspector health dob dcwp oath hearing sign sidewalk license renewal sanitation agency penalty padlock"},
- {id:"money",icon:"money",title:"I need funding",short:"Funding",sub:"Loans, grants and financing help.",
-  start:"Start with NYC Funds Finder to see which loans and grants fit your business. Then talk to a free advisor before you apply.",
-  steps:[["Know what the money is for","Write down how much you need and exactly what you’ll use it for."],["Search NYC Funds Finder","See City programs and partner lenders that match your business."],["Get free help preparing","A Business Solutions Center advisor can review your documents and match you with lenders."],["Compare offers carefully","Look at the total cost, not just the monthly payment. Be careful with cash advances and very fast offers."],["Apply and keep copies","Save everything you submit and every message you get back."]],
-  res:["funds","bsc","cdfi","sba","grants"],
-  expect:["Most programs are loans, not grants. Grants are rare and competitive.","Lenders will want to see your finances. An advisor can help you get them in order first.","Never pay an upfront fee to someone who promises to “guarantee” a loan or grant."],
-  ready:["Last 1–2 years of tax returns","3–6 months of bank statements","Business registration and ID","A simple plan for how you’ll use the money"],
-  stuck:["If you were turned down, ask why. Then ask an advisor what to fix.","Try a community lender (CDFI). They often work with newer businesses.","Ask CB9 about upcoming funding workshops."],
-  can:["Share funding opportunities we hear about","Host workshops with lenders and advisors"],
-  nav:["Connect you with a free advisor or a community lender"],
-  cannot:["Give out grants or loans","Guarantee approval","Write loan recommendation letters "+V],
-  related:["grow","open","urgent"],
-  kw:"money loan grant funding capital credit finance financing cash bank lender equipment fund"},
- {id:"lease",icon:"lease",title:"I have a lease or landlord issue",short:"Lease or landlord",sub:"Renewals, rent increases, repairs. Free legal help may be available.",
-  start:"Get free legal help before you sign, renew, or respond to anything from your landlord. The City’s Commercial Lease Assistance program connects eligible businesses with lawyers at no cost.",
-  steps:[["Gather your papers","Your lease, any changes to it, and every letter or email from your landlord."],["Request free legal help","Apply to Commercial Lease Assistance. It’s free for eligible businesses."],["Write down what’s happening","Dates, repairs you asked for, payments, and conversations."],["Don’t sign or move out yet","Wait until you’ve talked to a lawyer, even if you feel pressured."],["Document any harassment","NYC has protections for commercial tenants. Keep a record of anything that feels like pressure to leave. "+V]],
-  res:["cla","legal","c311"],
-  expect:["A lawyer can review your lease, explain your rights, and help you negotiate. They may not be able to take every case to court.","Renewal talks go better when they start early. Many owners wait until the last few months."],
-  ready:["Your lease and all amendments","Landlord letters, texts and emails","Rent payment records","Photos of any building problems"],
-  stuck:["If you’re locked out or threatened, call 911. For building problems, call 311.","Ask CB9 to connect you with free legal partners."],
-  can:["Point you to free legal help","Host “Know Your Lease” workshops"],
-  nav:["Raise widespread rent and vacancy issues with elected officials"],
-  cannot:["Negotiate with your landlord for you","Give legal advice","Set or limit commercial rents"],
-  related:["money","city","cb9"],
-  kw:"lease landlord rent renewal increase eviction lockout repairs space tenant harassment commercial"},
- {id:"hiring",icon:"hiring",title:"I need employees",short:"Hiring",sub:"Find workers, train staff, know the rules.",
-  start:"Workforce1 can help you find candidates for free. Tell them the roles you need, and they’ll send you pre-screened applicants.",
-  steps:[["Describe the job","Hours, pay, duties and any skills you need."],["Contact Workforce1","Post the job and get candidates at no cost."],["Learn the basic employer rules","Minimum wage, paid safe and sick leave, and required workplace posters."],["Ask about training funds","Some programs help pay to train new or current staff."],["Post locally too","Share the job with the CB9 network and local schools and programs."]],
-  res:["wf1","dcwp","nysdol","syep","train"],
-  expect:["Hiring help is free. You choose who to hire.","Employer rules in NYC go beyond State rules. DCWP has plain-language guides for employers."],
-  ready:["Job description","Pay rate and schedule","How candidates should apply"],
-  stuck:["A Business Solutions Center advisor can help with hiring and training questions.","Ask CB9 to connect you with local workforce programs."],
-  can:["Share job openings with the CB9 network "+V,"Connect you with local workforce programs"],
-  nav:["Help you reach the right City hiring contact"],
-  cannot:["Recruit or screen candidates","Advise on employment law"],
-  related:["grow","connect"],
-  kw:"hire hiring staff employee employees worker workers job jobs recruit training payroll youth summer sick leave wage"},
- {id:"grow",icon:"grow",title:"I want to grow my business",short:"Growing my business",sub:"More customers, City contracts, classes, mentors.",
-  start:"Pick one goal for the next six months: more customers, a bigger space, or selling to the City. Then book a free session with a business advisor to make a plan.",
-  steps:[["Pick one goal","Growth is easier to plan one goal at a time."],["Take a free class","SBS and the Brooklyn Public Library offer free business classes."],["Get certified, if it fits","Minority- and women-owned businesses can get M/WBE certified to compete for City contracts."],["Register in PASSPort","See and bid on City contracts."],["Get a mentor","SCORE offers free mentors who’ve run businesses."]],
-  res:["courses","mwbe","passport","bpl","score","bsc"],
-  expect:["Certification takes paperwork and time. Start early if you’re aiming for a specific contract. "+V,"Classes and mentors are free. Some classes fill up quickly."],
-  ready:["Your goal in one sentence","Basic financials","Business registration documents"],
-  stuck:["A Business Solutions Center advisor can help you choose where to start.","Ask CB9 about local programs and events."],
-  can:["Feature your business in Shop Local campaigns","Invite you to speak or host at CB9 programs"],
-  nav:["Connect you with certification and contracting help"],
-  cannot:["Award contracts","Certify businesses"],
-  related:["connect","money","hiring"],
-  kw:"grow growth expand marketing customers online website social media contract contracts procurement certification mwbe class classes training mentor"},
- {id:"connect",icon:"connect",title:"I want to connect with other local businesses",short:"Connecting locally",sub:"Meet neighbors, find partners, work together.",
-  start:"Join the CB9 Local Business Network. It’s free. You’ll hear about events, Shop Local campaigns and ways to work with other businesses in the district.",
-  steps:[["Join the network","Takes about a minute."],["Add your business to the directory","It’s opt-in. You choose what’s shown."],["Post what you offer or need","Catering, printing, event space, cross-promotion and more."],["Come to a networking event","Meet other owners in person."],["Join your corridor’s merchant group","If your street has one, it’s a strong way to work together."]],
-  res:["network","directory","merchants","bids","chamber"],
-  expect:["The network is run by volunteers on the CB9 Economic Development Committee. "+V,"We’ll email about once a month. You can leave anytime. "+V],
-  ready:["Business name and category","Website or Instagram","What you can offer other businesses"],
-  stuck:["Not sure what to offer? Come to an event and see what others are doing.","Ask CB9 to introduce you to a specific kind of business."],
-  can:["Introduce you to other local businesses","Feature you in the directory and campaigns","Help you host or join events"],
-  nav:["Connect you with merchant associations and BIDs"],
-  cannot:["Endorse or guarantee any business in the directory"],
-  related:["grow","cb9"],
-  kw:"connect network networking meet partner partners collaborate directory local neighbors merchant association bid shop local"},
- {id:"urgent",icon:"urgent",title:"Something urgent happened",short:"Something urgent",sub:"Fire, flood, break-in, outage, or a sudden closure.",urgent:true,
-  start:"Make sure everyone is safe. Then photograph and video everything before you clean up, and call your insurance company.",
-  steps:[["Get safe","Call 911 for fire, injury, crime in progress, or a gas smell. Call 311 for non-emergency City problems."],["Document everything","Photos and video of damage, and a list of damaged items, before cleanup."],["Call your insurance company","For a break-in, file a police report. Insurers usually need the report number."],["Contact City emergency help for businesses","They can connect you to recovery resources. "+V],["Tell your customers","Post a sign and update your hours online."]],
-  res:["e911","c311","emerg","utility","sba","notify"],
-  expect:["If an agency closed your business (for example, a vacate order), the paperwork names the agency and how to reopen. Contact that agency right away.","Recovery loans may become available after a declared disaster. They’re usually loans, not grants."],
-  ready:["Photos and video","Insurance policy number","Police report number, if any","Your lease"],
-  stuck:["Ask CB9. We can help you figure out who to call and push for answers.","Contact your City Council Member’s office."],
-  can:["Help you figure out who to call","Share your situation with the committee, with your permission"],
-  nav:["Help you reach agency contacts and elected officials"],
-  cannot:["Respond to emergencies","Provide emergency funding"],
-  related:["city","money","lease"],
-  kw:"urgent emergency fire flood water leak break in break-in burglary robbery stolen vandal power outage gas closed vacate order damage storm"},
- {id:"unsure",icon:"unsure",title:"I’m not sure what I need",short:"Not sure",sub:"Answer two quick questions and we’ll point the way.",
-  start:"Use the quick guide below. If nothing fits, tell us your situation in your own words. A committee member will point you to the right next step.",
-  steps:[["Answer two quick questions","The guide suggests the best page for you."],["Read “Start here” on that page","It’s the one thing to do first."],["Call 311 for City questions","311 can tell you which agency handles almost anything."],["Still unsure? Ask CB9","No question is too small."]],
-  res:["c311","bsc","mycity","intake"],
-  expect:["311 is free and works in many languages.","Business Solutions Center advisors help with almost any business question."],
-  ready:["A sentence or two about what’s going on","Any papers you received"],
-  stuck:["Ask CB9. That’s what we’re here for."],
-  can:["Listen and help you figure out where to start"],
-  nav:["Connect you with the right agency or partner"],
-  cannot:STD_CANNOT,
-  related:["cb9","city","open"],
-  kw:"not sure dont know don't know help confused where start question"},
- {id:"cb9",icon:"cb9",title:"I want CB9’s help",short:"CB9’s help",sub:"What the Board does and how to ask us.",
-  start:"Community Boards are local, advisory and volunteer-led. We can’t issue permits or cancel fines. We can help you find the right door, raise issues with the City, and bring businesses together.",
-  steps:[["Send us your question","Use the short form. It takes about two minutes."],["A committee member reviews it","We aim to reply within "+'<span class="ph">[X business days]</span>'+"."],["We follow up","With next steps, a referral, or a call."],["Bring bigger issues to a public meeting","Anyone can attend. Business owners can speak during public session. "+V]],
-  res:["intake","office","meetings","council"],
-  expect:["We’re volunteers who live and work in the district.","We can’t solve everything, but we’ll tell you honestly what we can and can’t do."],
-  ready:["Your business name and address","What happened and when","Any agency or 311 numbers"],
-  stuck:["Call the CB9 district office during business hours. "+V],
-  can:["Help you find the right agency or program","Host workshops, networking and Shop Local campaigns","Bring local business issues to the full Board"],
-  nav:["Raise patterns of problems with City agencies","Connect you with elected officials’ offices","Review and comment on liquor license, outdoor dining and street event applications "+V],
-  cannot:["Issue permits or licenses","Cancel or reduce fines","Give legal, tax or financial advice","Order an agency or landlord to act"],
-  related:["unsure","connect","city"],
-  kw:"cb9 community board committee help advocacy meeting liquor license sla outdoor dining street fair elected official"}
+ {id:"lease",icon:"lease",q:"Having trouble with your lease or landlord?",short:"Lease or landlord",
+  first:"Get free legal help before you sign, renew, or respond to anything from your landlord.",
+  steps:["Gather your lease and every letter, text or email from your landlord.","Request a free lawyer through the City’s Commercial Lease Assistance program.","Don’t sign new terms or move out until you’ve talked to them.","Keep notes: dates, repair requests, payments."],
+  best:{name:"Commercial Lease Assistance",org:"NYC Small Business Services",what:"Free lawyers for eligible businesses. They can review a lease, help with a renewal, or advise on a dispute.",url:null,note:"Link and eligibility"},
+  alt:["Local legal services nonprofits may also help. <span class=\"ph\">[CB9 to list 1–2 partners]</span>","Locked out or threatened? Call 911."],
+  can:"Point you to free legal help and run Know Your Lease sessions.",
+  nav:"Track lease and vacancy problems across the district and raise them with elected officials.",
+  cannot:"Negotiate with your landlord, give legal advice, or set rents."},
+ {id:"city",icon:"city",q:"Got a violation or City-agency problem?",short:"Violation or City agency",
+  first:"Find two things on your notice: the agency and the deadline. Respond before the deadline, even if you plan to fight it.",
+  steps:["Take a photo of the whole notice.","Fix the problem if you can, and keep proof: photos, receipts, dates.","Respond by the deadline: pay it, or ask for a hearing. Many City summonses are heard at OATH, often online or by phone.","Agency not answering? Use 311 and write down the request number."],
+  best:{name:"OATH Hearings Division",org:"NYC Office of Administrative Trials and Hearings",what:"Look up your summons, see your hearing date, and find out how to respond.",url:"https://www.nyc.gov/site/oath/index.page"},
+  alt:["Free help understanding the rules for your business. <span class=\"ph\">[SBS compliance program name and link]</span>","Your City Council Member’s office helps with agencies that aren’t responding."],
+  can:"Help you figure out which agency is responsible and what to ask for.",
+  nav:"Bring repeated or unresolved problems to agencies at our public meetings, and connect you with elected officials’ offices.",
+  cannot:"Cancel, reduce or pay a fine, represent you at a hearing, or overrule an agency."},
+ {id:"money",icon:"money",q:"Need money for your business?",short:"Money for your business",
+  first:"Search NYC Funds Finder to see which loans and grants fit your business. Then get free help before you apply.",
+  steps:["Write down how much you need and exactly what it’s for.","Search NYC Funds Finder.","Book a free advisor to help prepare your documents.","Compare the total cost, not just the monthly payment. Never pay an upfront fee to someone who “guarantees” a loan or grant."],
+  best:{name:"NYC Funds Finder",org:"NYC Small Business Services",what:"Answer a few questions and see loans, grants and financing that may fit. Most options are loans. Grants are rare.",url:null,note:"Direct link"},
+  alt:["Free financing advisors at NYC Business Solutions Centers. <span class=\"ph\">[Brooklyn location and link]</span>","Community lenders (CDFIs) often work with businesses banks turn down. <span class=\"ph\">[CB9 to list 1–2]</span>"],
+  can:"Share funding opportunities we hear about and host sessions with lenders.",
+  nav:"Connect you with a free advisor or a community lender.",
+  cannot:"Give out grants or loans, or guarantee approval."},
+ {id:"trash",icon:"trash",q:"Dealing with trash, rats or sidewalk issues?",short:"Trash, rats or sidewalk",
+  first:"Check the City’s sanitation rules for businesses first. Most sanitation fines come from how and when trash is set out.",
+  steps:["Learn the rules for your trash: containers, set-out times, and keeping your sidewalk clean. "+V,"Make sure your private carter’s pickup times match the rules.","Report problems you don’t control (illegal dumping, overflowing corner baskets, rats on public property) to 311. Save the number.","Rats inside or around your business: use a licensed pest control company. The Health Department offers free rat-prevention training. "+V,"Loading, parking or street conditions hurting business? Report it to 311, then tell CB9. DOT brings street changes to the Community Board."],
+  best:{name:"Sanitation rules for businesses",org:"NYC Department of Sanitation (DSNY)",what:"What businesses are responsible for: trash and recycling, set-out times, containers and sidewalks.",url:"https://www.nyc.gov/site/dsny/index.page",note:"Link to the business rules page"},
+  alt:["311 for anything on the street or sidewalk you don’t control. Save every request number.","Same problem keeps coming back? Tell CB9 and include your 311 numbers. A pattern of reports from one corridor gives us something to push with."],
+  can:"Explain the rules and who’s responsible for what.",
+  nav:"Collect repeated reports from a corridor and press DSNY, the Health Department and DOT for fixes.",
+  cannot:"Dismiss sanitation tickets, pick up trash, or exterminate."},
+ {id:"customers",icon:"customers",q:"Want more customers or local exposure?",short:"More customers",
+  first:"Sign up for CB9’s next Shop Local promotion. It’s free and puts your business in front of neighbors.",
+  steps:["Join the CB9 Local Business Network so you hear about promotions first.","Sign up for the next Shop Local campaign.","Make sure people can find you: claim your free Google Business Profile and keep your hours current.","Take a free marketing class. "+V],
+  best:{name:"CB9 Shop Local",org:"CB9 Economic Development Committee",what:"Window signs, social media features, and a spot in our neighborhood guide during each campaign.",route:"local"},
+  alt:["Free business and marketing classes from NYC Small Business Services. <span class=\"ph\">[course link]</span>","The Brooklyn Public Library’s business center offers free one-on-one help. "+V],
+  can:"Feature your business in Shop Local campaigns and events.",
+  nav:"Work with merchant groups on promotions for a whole corridor.",
+  cannot:"Advertise for or endorse individual businesses."},
+ {id:"connect",icon:"connect",q:"Want to connect with other CB9 businesses?",short:"Connect with businesses",
+  first:"Join the CB9 Local Business Network. It’s free, and it’s how we tell you about mixers and joint projects.",
+  steps:["Join the network. It takes about a minute.","Come to the next owner mixer.","Find your corridor’s merchant association, or tell us if your block doesn’t have one.","Tell us what you’d like to do with neighbors: joint events, shared vendors, block cleanups."],
+  best:{name:"CB9 Local Business Network",org:"CB9 Economic Development Committee",what:"Free. Events, Shop Local campaigns and introductions to other owners in the district.",route:"join"},
+  alt:["Merchant associations on your corridor. <span class=\"ph\">[CB9 to list]</span>","Brooklyn Chamber of Commerce for borough-wide networking. "+V],
+  can:"Introduce you to other owners and host mixers.",
+  nav:"Help a block or corridor start or strengthen a merchant group.",
+  cannot:"Run a merchant group for you or endorse businesses."},
+ {id:"unsure",icon:"unsure",q:"Not sure where to start?",short:"Not sure",wide:true,
+  first:"Tell CB9 what’s going on in a sentence or two. We’ll point you to the right place.",
+  steps:["Is it about a City rule, permit or service? Call 311 and ask which agency handles it.","Is it about running your business? A free NYC Business Solutions Center advisor can help with almost anything.","Still unsure? Tell CB9. No question is too small."],
+  best:{name:"311",org:"City of New York",what:"Call 311, or use the website or app. Free, any time, in many languages. Ask which agency handles your question.",url:"https://portal.311.nyc.gov/"},
+  alt:["Free advisors at NYC Business Solutions Centers. <span class=\"ph\">[Brooklyn location and link]</span>"],
+  can:"Listen, and help you figure out where to start.",
+  nav:"Connect you with the right agency or partner.",
+  cannot:"Issue permits, cancel fines, or give legal or financial advice."}
 ];
 const PI = Object.fromEntries(P.map(p=>[p.id,p]));
 
-/* ---------- guided help ---------- */
-const G = [
- {id:"open",icon:"open",label:"Open a business",q:"Where are you right now?",opts:[
-   ["It’s still an idea",{p:"open",also:["money"],note:"Start by looking up what your business type needs, then book a free advisor."}],
-   ["Looking at a space or about to sign a lease",{p:"lease",also:["open"],note:"Before you sign anything, get a free lease review."}],
-   ["Ready to open, need permits or inspections",{p:"open",also:["city"],note:"Check every license your business type needs and schedule inspections early."}],
-   ["Need money to get started",{p:"money",also:["open"],note:"See which programs fit, then get help preparing your application."}]]},
- {id:"problem",icon:"city",label:"Solve a problem",q:"What kind of problem?",opts:[
-   ["A violation, fine or summons",{p:"city",also:["cb9"],note:"Find the agency and the deadline on the paper first."}],
-   ["An inspection is coming up",{p:"city",also:["open"],note:"Get free help understanding the rules before the inspector arrives."}],
-   ["Landlord or lease trouble",{p:"lease",also:["cb9"],note:"Free legal help may be available."}],
-   ["Fire, flood, break-in or outage",{p:"urgent",also:["money"],note:"If anyone is in danger, call 911 now."}],
-   ["Something on my block (trash, construction, parking)",{p:"cb9",also:["city"],note:"Report it to 311 and save the request number. Then tell CB9 if it keeps happening."}]]},
- {id:"money",icon:"money",label:"Find money",q:"What do you need money for?",opts:[
-   ["To start a business",{p:"money",also:["open"],note:"Most programs are loans. A free advisor can help you prepare."}],
-   ["To recover from something that happened",{p:"urgent",also:["money"],note:"Document the damage first. Then look at recovery help."}],
-   ["To grow, hire or buy equipment",{p:"money",also:["grow"],note:"Compare total cost, not just the monthly payment."}],
-   ["I don’t know what I qualify for",{p:"money",also:["unsure"],note:"NYC Funds Finder asks a few questions and shows what may fit."}]]},
- {id:"people",icon:"hiring",label:"Find people",q:"Who are you looking for?",opts:[
-   ["Employees",{p:"hiring",also:["grow"],note:"Workforce1 can send you pre-screened candidates for free."}],
-   ["A business to work with (accountant, printer, caterer…)",{p:"connect",also:["grow"],note:"Check the local directory and the “I can offer / I’m looking for” board."}],
-   ["A mentor or advisor",{p:"grow",also:["connect"],note:"SCORE mentors and City advisors are free."}]]},
- {id:"grow",icon:"grow",label:"Grow",q:"What would help most?",opts:[
-   ["More customers",{p:"grow",also:["connect"],note:"Join Shop Local campaigns and take a free marketing class."}],
-   ["City contracts or certification",{p:"grow",also:["money"],note:"Look into M/WBE certification and register in PASSPort."}],
-   ["Classes and training",{p:"grow",also:["hiring"],note:"Free classes are available from the City and the library."}],
-   ["Expand or move",{p:"grow",also:["lease","money"],note:"Get a free lease review before you commit to a new space."}]]},
- {id:"local",icon:"connect",label:"Connect locally",q:"What sounds good?",opts:[
-   ["Meet other owners",{p:"connect",also:["cb9"],note:"Join the network and come to the next event."}],
-   ["Find businesses to work with",{p:"connect",also:["grow"],note:"Browse the directory or post what you need."}],
-   ["Get involved with CB9",{p:"cb9",also:["connect"],note:"Come to a committee meeting, host an event, or join a campaign."}]]},
- {id:"else",icon:"unsure",label:"Something else",q:null,result:{p:"cb9",also:["unsure"],note:"Tell us in your own words. A committee member will point you to the right next step."}}
-];
-
-/* ---------- local content (sample) ---------- */
+/* ---------- local content (easy to update) ---------- */
 const EVENTS = [
- {mon:"NOV",day:"—",title:"Economic Development Committee meeting",when:'<span class="ph">[Day, time]</span>',where:'<span class="ph">[Location]</span>',type:"Public meeting",desc:"Open to everyone. Bring a question or a local issue. Business owners can speak during public session.",ver:true},
- {mon:"NOV",day:"18",title:"Know Your Lease: free workshop",when:"Wed · 6:30–8 pm",where:'<span class="ph">[Location TBD]</span>',type:"Workshop",desc:"What to look for in a commercial lease, how renewals work, and where to get free legal help.",sample:true},
- {mon:"DEC",day:"5",title:"Shop Local Weekend",when:"Sat–Sun",where:"Corridors across the district",type:"Campaign",desc:"Participating businesses get window signs and a spot on our social media and in this playbook.",sample:true},
- {mon:"JAN",day:"14",title:"Owner-to-Owner Mixer",when:"Thu · 6–8 pm",where:'<span class="ph">[Host business]</span>',type:"Networking",desc:"Meet other owners, swap referrals, and find partners. Hosted at a local business.",sample:true}
+ {mon:"DEC",day:"—",title:"Small Business Brunch",when:'<span class="ph">[Date · time]</span>',where:'<span class="ph">[Location]</span>'},
+ {mon:"MO.",day:"—",title:"Economic Development Committee meeting",when:"Monthly · open to the public",where:'<span class="ph">[Day, time, location]</span>'},
+ {mon:"SPR",day:"—",title:"Shop Local campaign",when:'<span class="ph">[Dates TBD]</span>',where:"Corridors across the district"}
 ];
-const HEARD = {month:"December 2026",items:[
- {said:"Inspections and fines are confusing. Owners don’t know which agency is which, or how to fight a ticket.",doing:"Planning an Agency Office Hours where owners can meet City agency staff in one room. Publishing a plain-English guide to common violations on this site.",st:1,note:"Inviting agencies. Date to be announced."},
- {said:"Lease renewals and rent increases are a top worry, especially on the main commercial streets.",doing:"Partnering with free legal help providers on a Know Your Lease workshop. Sharing the City’s Commercial Lease Assistance program.",st:2,note:"Workshop being scheduled."},
- {said:"Foot traffic is down on some blocks, and neighbors don’t know what’s here.",doing:"Launching a Shop Local campaign and an opt-in business directory on this site.",st:2,note:"Directory is live. Campaign launching."}
-]};
 const STAGES = ["Heard","Looking into it","Taking action","Done"];
-const HOODS = ["Crown Heights South","Prospect Lefferts Gardens","Wingate"];
-const CORRIDORS = ["Nostrand Av","Flatbush Av","Rogers Av","Empire Blvd","Utica Av","Kingston Av"];
-const BIZ = [
- {n:"Lefferts Print & Copy",cat:"Printing",type:"Storefront",hood:"Prospect Lefferts Gardens",st:"Rogers Av",d:"Flyers, menus, banners and window signs. Same-day for small jobs.",open:["Bulk orders","Collaborations"]},
- {n:"Island Pot Catering",cat:"Food & catering",type:"Home-based",hood:"Wingate",st:"Utica Av",d:"Caribbean catering for events of 20–150 people.",open:["Catering orders","Pop-ups"]},
- {n:"Kingston Frame & Photo",cat:"Photography",type:"Storefront",hood:"Crown Heights South",st:"Kingston Av",d:"Framing, headshots and product photos for local businesses.",open:["Business photos"]},
- {n:"Empire Books & Tax",cat:"Accounting & tax",type:"Office",hood:"Crown Heights South",st:"Empire Blvd",d:"Bookkeeping, payroll and sales tax filing for small businesses.",open:["New clients"]},
- {n:"Sterling Hall",cat:"Event space",type:"Storefront",hood:"Prospect Lefferts Gardens",st:"Flatbush Av",d:"A 60-person room for workshops, pop-ups and community meetings.",open:["Event bookings","Hosting CB9 events"]},
- {n:"Nostrand Natural Hair",cat:"Beauty",type:"Storefront",hood:"Crown Heights South",st:"Nostrand Av",d:"Natural hair care and braiding. Walk-ins welcome.",open:["Cross-promotion"]},
- {n:"Rutland Road Bakery",cat:"Food & catering",type:"Storefront",hood:"Wingate",st:"Rogers Av",d:"Breads, patties and celebration cakes.",open:["Wholesale","Cross-promotion"]},
- {n:"Flatbush Fix-It",cat:"Repairs",type:"Service",hood:"Prospect Lefferts Gardens",st:"Flatbush Av",d:"Phone, laptop and small appliance repair. Pickup available.",open:["Business accounts"]},
- {n:"Midwood St. Design Co.",cat:"Design & marketing",type:"Home-based",hood:"Prospect Lefferts Gardens",st:"Flatbush Av",d:"Logos, menus, websites and social media for neighborhood businesses.",open:["New clients","Collaborations"]},
- {n:"Utica Fresh Market",cat:"Grocery & retail",type:"Storefront",hood:"Wingate",st:"Utica Av",d:"Produce, Caribbean groceries and household goods.",open:["Local vendors"]}
-];
-const BOARD_CATS = ["Catering","Photography","Event space","Printing","Accounting","Cross-promotion","Vendors","Professional services"];
-let POSTS = [
- {k:"offer",c:"Printing",t:"10% off flyer and menu printing for CB9 network members.",by:"Lefferts Print & Copy"},
- {k:"seek",c:"Event space",t:"Looking for a kitchen-equipped space for a 60-person event in December.",by:"Island Pot Catering"},
- {k:"offer",c:"Event space",t:"Weekday afternoons are open for workshops and pop-ups.",by:"Sterling Hall"},
- {k:"seek",c:"Cross-promotion",t:"Want to swap window signs and social posts with a nearby café or bookstore.",by:"Rutland Road Bakery"},
- {k:"seek",c:"Accounting",t:"Need a bookkeeper who knows retail and sales tax.",by:"Utica Fresh Market"},
- {k:"offer",c:"Photography",t:"Product and storefront photos for local businesses, by the hour.",by:"Kingston Frame & Photo"}
-];
-const INTERESTS = ["Networking events","Shop Local initiatives","Hosting an event","Business resources","Advocacy / issues","Collaborating with other businesses","Speaking at a CB9 program"];
-const CATEGORIES = ["Food & restaurant","Food & catering","Retail","Grocery","Beauty & personal care","Health & wellness","Professional services","Arts & creative","Repairs & trades","Childcare & education","Nonprofit","Other"];
+const HEARD = {label:"Sample. CB9 to replace with what owners say at the brunch.",items:[
+ {t:"Commercial rent and lease uncertainty",said:"Renewals come with big increases or no answer at all. Owners don’t know their options.",doing:"Sharing free lease help and planning a Know Your Lease session with legal partners.",st:1},
+ {t:"Sanitation and corridor conditions",said:"Overflowing corner baskets, dumping and rats are hurting foot traffic on some blocks.",doing:"Collecting 311 numbers by corridor to bring to DSNY and the Health Department.",st:1},
+ {t:"Not knowing what help exists",said:"Owners didn’t know free lawyers, advisors and funding programs were available.",doing:"This playbook, and a short resources segment at every committee meeting.",st:2}
+]};
+const TOPICS = P.map(p=>[p.id,p.short]).concat([["other","Something else"]]);
+const INTERESTS = ["Shop Local promotions","Owner mixers","Hosting an event","Working with nearby businesses","Corridor issues and advocacy"];
 
 /* ---------- state ---------- */
-const S = {askTopic:null, joinInterests:[], dirOpt:false, guide:{step:0,cat:null,res:null},
-  dir:{hood:"All",cat:"All",type:"All",q:""}, board:{k:"all",c:"All"}, localTab:null};
-const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const S = {topic:null, interest:null};
 
 /* ---------- components ---------- */
-function pcard(p){
-  const cls = p.urgent?" urgent":p.id==="unsure"?" wide unsure":p.id==="cb9"?" wide cb9":"";
-  return `<a class="pcard${cls}" href="#help-${p.id}">
-    <span class="ic">${ico(p.icon)}</span>
-    <span class="body"><span class="t">${p.title}</span>${p.sub?`<span class="s">${p.sub}</span>`:""}</span>
-    <span class="go"><span>${p.id==="cb9"?"How we help":"What to do"}</span>${ico("arrow")}</span></a>`;
-}
-function rcard(key){
-  const r = R[key]; if(!r) return "";
-  let link = "";
-  if(r.route) link = `<a class="btn btn-primary btn-sm" href="#${r.route}">${r.route==="ask"?"Open the form":"Go there"} ${ico("arrow")}</a>`;
-  else if(r.url) link = `<a class="btn btn-ghost btn-sm" href="${r.url}" target="_blank" rel="noopener">Official site ${ico("ext")}<span class="sr">(opens in a new tab)</span></a>`;
-  else if(!r.plain) link = `<span class="ph">[Link to be added]</span>`;
-  const ver = r.route||r.plain ? "" : `<span class="verify" title="${esc(r.note||"Confirm link and description")}">Verify${r.note?": "+esc(r.note):" link"}</span>`;
-  return `<article class="rcard">
-    <div class="top"><div><h3>${r.name}</h3><div class="org">${r.org}</div></div></div>
-    <p class="what">${r.what}</p>
-    ${r.bring?`<details><summary>What you may need</summary><p class="bring">${r.bring}</p></details>`:""}
-    <div class="actions">${link}${ver}</div></article>`;
-}
-function evItem(e){
-  return `<article class="ev"><div class="date" aria-hidden="true"><small>${e.mon}</small><b>${e.day}</b></div>
-    <div><h3>${e.title}</h3>
-    <div class="meta"><span>${e.when}</span><span>${e.where}</span><span class="tag">${e.type}</span>${e.sample?'<span class="verify">Sample</span>':""}${e.ver?V:""}</div>
-    <details class="more"><summary>Details</summary><p>${e.desc}</p></details></div></article>`;
-}
-function heardHTML(limit){
-  const items = HEARD.items.slice(0, limit||HEARD.items.length);
-  return `<div class="heard">${items.map((h,i)=>`
-    <article class="hitem">
-      <div class="hnum" aria-hidden="true">${i+1}</div>
-      <div><h4>What we heard</h4><p class="said">${h.said}</p></div>
-      <div class="col2"><h4>What CB9 is doing</h4><p class="doing">${h.doing}</p></div>
-      <div class="tracker">
-        <p class="status-line"><strong>Status: ${STAGES[h.st]}.</strong> <span class="muted">${h.note}</span></p>
-        <div class="track" aria-hidden="true">${STAGES.map((s,j)=>`<span class="${j<=h.st?"on":""}"></span>`).join("")}</div>
-        <div class="track-labels" aria-hidden="true">${STAGES.map((s,j)=>`<span class="${j===h.st?"cur":""}">${s}</span>`).join("")}</div>
-      </div>
-    </article>`).join("")}</div>`;
-}
-function joinBand(){
-  return `<div class="band join">
-    <div class="stack" style="gap:.75rem"><span class="eyebrow">Free · takes a minute</span>
-      <h2>Join the CB9 Local Business Network</h2>
-      <p>Get invited to events, Shop Local campaigns and chances to work with businesses down the block.</p>
-      <div class="btnrow"><a class="btn btn-onfill" href="#join">Join the network ${ico("arrow")}</a></div></div>
-    <ul>${["Networking events","Shop Local campaigns","A spot in the local directory (optional)","A say in what CB9 works on"].map(t=>`<li>${ico("check")}${t}</li>`).join("")}</ul>
-  </div>`;
-}
-function askBand(topic){
-  return `<div class="band ask">
-    <div class="stack" style="gap:.75rem"><span class="eyebrow">Real people, from the neighborhood</span>
-      <h2>Ask the CB9 Economic Development Committee</h2>
-      <p>Not sure who to call? Tried an agency and got nowhere? Tell us what’s going on. We’ll point you to the right next step.</p>
-      <div class="btnrow"><a class="btn btn-accent" href="#ask" ${topic?`data-ask="${topic}"`:""}>Ask us a question ${ico("arrow")}</a></div></div>
-    <ul>${["Free, always","Takes about 2 minutes","We reply within <span class=\"ph\" style=\"color:inherit;background:transparent\">[X days]</span>"].map(t=>`<li>${ico("check")}${t}</li>`).join("")}</ul>
-  </div>`;
-}
+const pcard = p => `<a class="pcard${p.wide?" wide":""}" href="#help-${p.id}">
+  <span class="ic">${ico(p.icon)}</span><span class="t">${p.q}</span>
+  <span class="go"><span>Start here</span>${ico("arrow")}</span></a>`;
 
-/* ---------- guide ---------- */
-function guideHTML(){
-  const g = S.guide;
-  const dots = `<div class="steps-dots" aria-label="Step ${g.step+1} of 3">${[0,1,2].map(i=>`<i class="${i<=g.step?"on":""}"></i>`).join("")}<span style="margin-left:.4rem">Step ${g.step+1} of 3</span></div>`;
-  let body = "";
-  if(g.step===0){
-    body = `<h3 id="gq" style="font-size:1.5rem">What are you trying to do?</h3>
-      <div class="choices">${G.map(c=>`<button type="button" class="choice" data-g1="${c.id}">${ico(c.icon)}${c.label}</button>`).join("")}</div>`;
-  } else if(g.step===1){
-    const c = G.find(x=>x.id===g.cat);
-    body = `<h3 id="gq" style="font-size:1.5rem">${c.q}</h3>
-      <div class="choices">${c.opts.map((o,i)=>`<button type="button" class="choice" data-g2="${i}">${ico("arrow")}${o[0]}</button>`).join("")}</div>
-      <div><button type="button" class="linkbtn" data-greset>← Start over</button></div>`;
-  } else {
-    const r = g.res, p = PI[r.p];
-    body = `<div class="result">
-      <div class="result-main">
-        <span class="eyebrow">Your best next step</span>
-        <h3 id="gq" style="font-size:1.6rem">${p.title}</h3>
-        <p style="font-size:1.125rem">${r.note}</p>
-        <div class="btnrow"><a class="btn btn-primary" href="#help-${p.id}">Show me what to do ${ico("arrow")}</a></div>
-      </div>
-      ${r.also&&r.also.length?`<div><p class="muted" style="font-size:1rem;margin-bottom:.5rem">Also useful:</p><div class="related">${r.also.filter(a=>a!==p.id).map(a=>`<a href="#help-${a}">${ico(PI[a].icon)}${PI[a].short}</a>`).join("")}</div></div>`:""}
-      <div class="btnrow" style="align-items:center"><button type="button" class="linkbtn" data-greset>← Start over</button><span class="muted" style="font-size:1rem">or</span><a href="#ask" style="font-weight:700">ask a person</a></div>
-    </div>`;
-  }
-  return `<div class="guide" id="guide" aria-live="polite"><div class="guide-top"><span class="eyebrow">Quick guide · 3 taps</span>${dots}</div>${body}</div>`;
+function pips(st){return `<span class="pips" aria-hidden="true">${STAGES.map((s,j)=>`<i class="${j<=st?"on":""}"></i>`).join("")}</span>`}
+function heardHTML(){
+  return `<div class="heard">${HEARD.items.map(h=>`
+    <article class="hitem"><h3>${h.t}</h3>
+      <dl class="hrow">
+        <dt>What owners told us</dt><dd>${h.said}</dd>
+        <dt>What we’re doing</dt><dd>${h.doing}</dd>
+        <dt>Status</dt><dd><span class="status">${pips(h.st)}${STAGES[h.st]}</span></dd>
+      </dl></article>`).join("")}</div>`;
 }
-function refreshGuide(focus){
-  const el = document.getElementById("guide"); if(!el) return;
-  el.outerHTML = guideHTML();
-  if(focus){const q=document.getElementById("gq"); if(q){q.setAttribute("tabindex","-1"); q.focus({preventScroll:true});}}
+const evItem = e => `<article class="ev"><div class="date" aria-hidden="true"><small>${e.mon}</small><b>${e.day}</b></div>
+  <div><h3>${e.title}</h3><div class="meta"><span>${e.when}</span><span>${e.where}</span></div></div></article>`;
+
+function tellBand(topic){
+  return `<div class="band tell"><span class="eyebrow">Our safety net</span>
+    <h2>Tried the official route and still stuck? Tell CB9 what you’re dealing with.</h2>
+    <p>A committee member will read it and point you to a next step. If many businesses have the same problem, we take it to the City.</p>
+    <div class="btnrow"><a class="btn btn-accent" href="#tell"${topic?` data-topic="${topic}"`:""}>Tell CB9 ${ico("arrow")}</a></div></div>`;
 }
 
 /* ---------- pages ---------- */
 function home(){
   return `
   <section class="hero"><div class="wrap stack">
-    <span class="eyebrow">For small businesses in Brooklyn Community District 9</span>
+    <span class="eyebrow">CB9 Small Business Playbook</span>
     <h1 data-h>What do you need help with?</h1>
-    <p class="lede">Pick the one closest to your situation. Each page tells you what to do first, where to go, and when CB9 can help.</p>
-    <div class="search" role="search">
-      ${ico("search")}
-      <label for="q" class="sr">Search by keyword</label>
-      <input id="q" type="text" autocomplete="off" placeholder="Or type a word: fine, rent, loan, hiring…" data-search>
-    </div>
-    <div class="suggest" id="suggest" aria-live="polite"></div>
+    <p class="lede">Pick the one closest to your situation. We’ll tell you what to do first.</p>
   </div></section>
-  <section style="padding-bottom:clamp(2.5rem,6vw,4rem)"><div class="wrap">
-    <h2 class="sr">Choose a topic</h2>
+  <section style="padding-bottom:clamp(2.25rem,5vw,3.5rem)"><div class="wrap">
+    <h2 class="sr">Choose a problem</h2>
     <div class="tasks">${P.map(pcard).join("")}</div>
   </div></section>
 
-  <section class="section" id="sec-guide"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">Not sure where to start?</span><h2>Answer two questions. We’ll point the way.</h2></div></div>
-    ${guideHTML()}
+  <section class="section"><div class="wrap">
+    <div class="sec-head"><div class="stack"><span class="eyebrow">How CB9 can help</span><h2>We’re your neighborhood help desk</h2></div></div>
+    <div class="roles">
+      <div class="role"><b>Curate</b><p>We pick the few official resources that actually help.</p></div>
+      <div class="role"><b>Explain</b><p>In plain English: what to do first and what to expect.</p></div>
+      <div class="role"><b>Connect</b><p>To the right agency, advisor, lawyer or neighbor.</p></div>
+      <div class="role"><b>Escalate</b><p>When many businesses hit the same wall, we take it to the City.</p></div>
+    </div>
+    <p class="cant"><strong>What we can’t do:</strong> CB9 is a volunteer, advisory board. We don’t issue permits, cancel fines, give legal advice, or lend money.</p>
   </div></section>
 
   <section class="section"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">Coming up in CB9</span><h2>Happening now</h2></div><a class="btn btn-ghost btn-sm" href="#events">All events ${ico("arrow")}</a></div>
+    <div class="sec-head"><div class="stack"><span class="eyebrow">Doing Business in CB9</span><h2>Coming up</h2></div><a class="btn btn-ghost btn-sm" href="#local">See all ${ico("arrow")}</a></div>
     <div class="split">
-      <article class="feature">
-        <div class="awning" aria-hidden="true"></div>
-        <div class="in">
-          <span class="eyebrow">You’re invited</span>
-          <h3>CB9 Small Business Brunch</h3>
-          <p>Coffee, about 30 local owners, and straight answers to “who do I call about this?” Meet the Economic Development Committee and the businesses around you.</p>
-          <p style="font-weight:700"><span class="ph" style="background:transparent;color:var(--marigold);border-color:var(--marigold)">[Date · Time · Location]</span></p>
-          <div class="btnrow"><a class="btn btn-accent" href="#join">Join the network ${ico("arrow")}</a><a class="btn btn-ghost" style="color:var(--paper);border-color:var(--paper)" href="#brunch">Brunch page</a></div>
-        </div>
-      </article>
-      <div class="evlist">${EVENTS.slice(0,3).map(evItem).join("")}</div>
+      <article class="feature"><div class="awning" aria-hidden="true"></div><div class="in">
+        <span class="eyebrow">Next up</span><h3>Small Business Brunch</h3>
+        <p>Meet about 30 local owners and the Economic Development Committee. Tell us what’s hard right now.</p>
+        <p style="font-weight:700"><span class="ph">[Date · time · location]</span></p>
+        <div class="btnrow"><a class="btn btn-accent" href="#join">Join the network ${ico("arrow")}</a></div>
+      </div></article>
+      <div class="lcard"><span class="eyebrow">Shop Local</span><h3>Get your business in the next promotion</h3><p>Free window signs, social media features and a spot in our neighborhood guide.</p><a class="btn btn-primary btn-sm" href="#join" data-interest="Shop Local promotions">Count me in ${ico("arrow")}</a></div>
     </div>
   </div></section>
 
   <section class="section"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">Doing Business in CB9</span><h2>Your neighbors are in business too</h2>
-      <p class="lede">Crown Heights South, Prospect Lefferts Gardens and Wingate. Find local partners, opportunities and ways to get involved.</p></div></div>
-    <div class="signs" style="margin-bottom:1.5rem" aria-label="Commercial corridors">${CORRIDORS.map(c=>`<span class="sign">${c}</span>`).join("")} ${V}</div>
-    <div class="tiles">
-      ${[["Local business directory","Find caterers, printers, accountants and more, right here.","local-directory"],["I can offer / I’m looking for","Post what you need or what you can do for other businesses.","local-board"],["Get involved","Host an event, join Shop Local, or speak at a program.","local-involve"],["Upcoming opportunities","Workshops, campaigns and networking.","events"]]
-        .map(t=>`<a class="tile" href="#${t[2]}"><h3>${t[0]}</h3><p>${t[1]}</p><span class="go">Open ${ico("arrow")}</span></a>`).join("")}
-    </div>
+    <div class="sec-head"><div class="stack"><span class="eyebrow">What we’re hearing from CB9 businesses</span><h2>You told us. Here’s what we’re doing.</h2><p class="muted">${HEARD.label} ${V}</p></div></div>
+    ${heardHTML()}
   </div></section>
 
-  <section class="section"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">What we’re hearing from local businesses</span><h2>What We Heard — ${HEARD.month}</h2>
-      <p class="lede">You tell us what’s hard. We report back on what we’re doing about it. <span class="verify">Sample data</span></p></div>
-      <a class="btn btn-ghost btn-sm" href="#local-heard">Full report ${ico("arrow")}</a></div>
-    ${heardHTML(3)}
-  </div></section>
-
-  <section class="section"><div class="wrap" style="display:grid;gap:1.25rem">
-    ${joinBand()}
-    ${askBand()}
-  </div></section>`;
-}
-
-function helpIndex(){
-  return `<section class="hero"><div class="wrap stack">
-    <span class="eyebrow">Get help</span><h1 data-h>Pick what’s closest to your situation</h1>
-    <p class="lede">Every topic follows the same plan: what to do first, the official place to go, what to expect, and when CB9 can step in.</p></div></section>
-    <section style="padding-bottom:3rem"><div class="wrap"><div class="tasks">${P.map(pcard).join("")}</div></div></section>
-    <section class="section"><div class="wrap">${guideHTML()}</div></section>`;
+  <section class="section"><div class="wrap">${tellBand()}</div></section>`;
 }
 
 function pathway(p){
-  const sections = [["start","Start here"],["do","What to do"],["res","Official resources"],["expect","What to expect"],["stuck","If you get stuck"],["cb9","Can CB9 help?"]];
-  return `<div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">Home</a><span aria-hidden="true">/</span><a href="#help">Get help</a></nav>
-    <div class="phead${p.urgent?" urgent":""}"><span class="ic">${ico(p.icon)}</span>
-      <div class="stack" style="gap:.6rem"><h1 data-h>${p.title}</h1><p class="lede">${p.sub}</p></div></div>
-    ${p.urgent?`<div class="urgent-banner" role="alert">${ico("phone")}<span>If anyone is hurt or in danger, call 911 now.</span></div>`:""}
-    <div class="jump" aria-label="Jump to section">${sections.map(s=>`<button type="button" data-jump="ps-${s[0]}">${s[1]}</button>`).join("")}</div>
-    <div class="playout">
-      <div>
-        <section class="psec" id="ps-start" aria-labelledby="h-start">
-          <h2 id="h-start" class="sr">Start here</h2>
-          <div class="start"><span class="label">Start here</span><p>${p.start}</p></div>
-        </section>
-        ${p.id==="unsure"?`<section class="psec">${guideHTML()}</section>`:""}
-        <section class="psec" id="ps-do"><h2>What to do</h2>
-          <ol class="do">${p.steps.map(s=>`<li><div><b>${s[0]}</b><span>${s[1]}</span></div></li>`).join("")}</ol>
-        </section>
-        <section class="psec" id="ps-res"><h2>Official resources</h2>
-          <p class="muted" style="font-size:1rem">We link to official and trusted sources. Always confirm details with them.</p>
-          <div class="res">${p.res.map(rcard).join("")}</div>
-        </section>
-        <section class="psec" id="ps-expect"><h2>What to expect</h2>
-          <div class="expect"><div class="txt">${p.expect.map(t=>`<p>${t}</p>`).join("")}</div>
-          <div class="ready"><h3>Have these ready</h3><ul class="checks">${p.ready.map(t=>`<li>${ico("check")}<span>${t}</span></li>`).join("")}</ul></div></div>
-        </section>
-        <section class="psec" id="ps-stuck"><h2>If you get stuck</h2>
-          <ul class="stuck">${p.stuck.map(t=>`<li>${ico("route")}<span>${t}</span></li>`).join("")}</ul>
-        </section>
-        <section class="psec" id="ps-cb9"><h2>Can CB9 help?</h2>
-          <div class="cb9grid">
-            <div class="cbcol yes"><h3>${ico("check")}Yes, we can help directly</h3><ul>${p.can.map(t=>`<li>${t}</li>`).join("")}</ul></div>
-            <div class="cbcol"><h3>${ico("route")}We can help you navigate</h3><ul>${p.nav.map(t=>`<li>${t}</li>`).join("")}</ul></div>
-            <div class="cbcol no"><h3>${ico("x")}We can’t</h3><ul>${p.cannot.map(t=>`<li>${t}</li>`).join("")}</ul></div>
-          </div>
-          ${askBand(p.id)}
-        </section>
-        <section class="psec"><h2 style="font-size:1.375rem">Related topics</h2>
-          <div class="related">${p.related.map(id=>`<a href="#help-${id}">${ico(PI[id].icon)}${PI[id].short}</a>`).join("")}</div>
-          <p class="reviewed">Page last reviewed: <span class="ph">[date]</span> by the CB9 Economic Development Committee.</p>
-        </section>
-      </div>
-      <aside class="aside" aria-label="On this page">
-        <div class="box"><span class="eyebrow">On this page</span>${sections.map(s=>`<button type="button" data-jump="ps-${s[0]}">${s[1]}</button>`).join("")}</div>
-        <div class="box askbox"><strong style="font-size:1.125rem">Stuck? Ask a real person.</strong><p style="font-size:1rem">The CB9 Economic Development Committee can point you to the right next step.</p>
-          <a class="btn btn-accent btn-sm" href="#ask" data-ask="${p.id}">Ask CB9 ${ico("arrow")}</a></div>
-      </aside>
-    </div></div>`;
+  const best = p.best;
+  const bestLink = best.route
+    ? `<a class="btn btn-primary" href="#${best.route}">${best.route==="join"?"Join the network":"See Shop Local"} ${ico("arrow")}</a>`
+    : best.url
+      ? `<a class="btn btn-primary" href="${best.url}" target="_blank" rel="noopener">Go to official site ${ico("ext")}<span class="sr">(opens in a new tab)</span></a>`
+      : `<span class="ph">[Link to be added]</span>`;
+  const others = P.filter(x=>x.id!==p.id&&x.id!=="unsure");
+  return `<div class="wrap narrow">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="#home">← All problems</a></nav>
+    <div class="phead"><span class="ic">${ico(p.icon)}</span><h1 data-h>${p.q}</h1></div>
+
+    <section class="first" aria-labelledby="h-first"><h2 id="h-first" class="label">What to do first</h2><p>${p.first}</p></section>
+
+    <section class="psec" style="border-top:0"><h2>Your next steps</h2>
+      <ol class="do">${p.steps.map(s=>`<li><span>${s}</span></li>`).join("")}</ol></section>
+
+    <section class="psec"><h2>Best official resource</h2>
+      <article class="best"><span class="org">${best.org}</span><h3>${best.name}</h3><p>${best.what}</p>
+        <div class="btnrow">${bestLink}${best.route?"":`<span class="verify" title="CB9 to confirm">Verify${best.note?": "+esc(best.note):" link"}</span>`}</div></article></section>
+
+    <section class="psec"><h2>If that doesn’t solve it</h2>
+      <ul class="alt">${p.alt.map(a=>`<li>${ico("route")}<span>${a}</span></li>`).join("")}</ul></section>
+
+    ${p.id==="unsure"?`<section class="psec"><h2>Or does one of these sound right?</h2>
+      <div class="chiplinks">${others.map(o=>`<a href="#help-${o.id}">${ico(o.icon)}${o.short}</a>`).join("")}</div></section>`:""}
+
+    <section class="still" aria-labelledby="h-still"><h2 id="h-still">Still stuck? Tell CB9.</h2>
+      <ul class="can">
+        <li>${ico("check")}<span><b>CB9 can help</b>${p.can}</span></li>
+        <li>${ico("route")}<span><b>CB9 can help navigate or escalate</b>${p.nav}</span></li>
+        <li>${ico("x")}<span><b>CB9 can’t</b>${p.cannot}</span></li>
+      </ul>
+      <div class="btnrow"><a class="btn btn-accent" href="#tell" data-topic="${p.id}">Tell CB9 what you’re dealing with ${ico("arrow")}</a></div>
+    </section>
+
+    <div class="helpful" id="helpful"><span>Did this page help?</span>
+      <button type="button" data-helpful="yes">Yes</button><button type="button" data-helpful="no">Not really</button></div>
+    <p class="reviewed">Last reviewed <span class="ph">[date]</span> by the CB9 Economic Development Committee.</p>
+  </div>`;
 }
 
 function local(){
   return `<section class="hero"><div class="wrap stack">
     <span class="eyebrow">Doing Business in CB9</span>
-    <h1 data-h>Your block. Your neighbors. Your network.</h1>
-    <p class="lede">Find local partners, share what you need, and see what the committee is working on.</p>
-    <div class="signs">${HOODS.map(h=>`<span class="sign">${h}</span>`).join("")}</div>
-    <div class="subnav" role="navigation" aria-label="Sections">${[["directory","Directory"],["board","Offer / Looking for"],["involve","Get involved"],["heard","What we heard"],["opps","Opportunities"]].map(s=>`<button type="button" data-jump="l-${s[0]}">${s[1]}</button>`).join("")}</div>
+    <h1 data-h>Stronger together, block by block</h1>
+    <p class="lede">Local events, promotions, and ways to work with your neighbors and with CB9.</p>
+    <div class="signs">${["Crown Heights South","Prospect Lefferts Gardens","Wingate"].map(h=>`<span class="sign">${h}</span>`).join("")}</div>
   </div></section>
 
-  <section class="section" id="l-directory" style="scroll-margin-top:6rem"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">Local business directory</span><h2>Find a business in the district</h2>
-      <p class="muted">Businesses choose to be listed. <span class="verify">Sample listings — not real businesses</span></p></div>
-      <a class="btn btn-primary btn-sm" href="#join" data-diropt>Add my business ${ico("arrow")}</a></div>
-    <div class="filters">
-      <div class="search" role="search" style="max-width:none;margin:0">${ico("search")}<label for="dq" class="sr">Search the directory</label><input id="dq" type="text" placeholder="Search: caterer, printing, accountant…" data-dirq value="${esc(S.dir.q)}"></div>
-      <div class="filterrow" role="group" aria-label="Neighborhood"><span class="k">Neighborhood</span>${["All",...HOODS].map(v=>`<button type="button" class="fbtn" data-dir="hood" data-v="${v}" aria-pressed="${S.dir.hood===v}">${v}</button>`).join("")}</div>
-      <div class="filterrow" role="group" aria-label="Category"><span class="k">Category</span>${["All",...new Set(BIZ.map(b=>b.cat))].map(v=>`<button type="button" class="fbtn" data-dir="cat" data-v="${v}" aria-pressed="${S.dir.cat===v}">${v}</button>`).join("")}</div>
-      <div class="filterrow" role="group" aria-label="Type"><span class="k">Type</span>${["All","Storefront","Home-based","Service","Office"].map(v=>`<button type="button" class="fbtn" data-dir="type" data-v="${v}" aria-pressed="${S.dir.type===v}">${v}</button>`).join("")}</div>
-    </div>
-    <div id="dirout">${dirList()}</div>
-  </div></section>
-
-  <section class="section" id="l-board" style="scroll-margin-top:6rem"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">Connect with another business</span><h2>I can offer / I’m looking for</h2>
-      <p class="muted">Post a need or an offer. Other owners reach out through CB9. <span class="verify">Sample posts</span></p></div></div>
-    <div class="filters">
-      <div class="filterrow" role="group" aria-label="Show"><span class="k">Show</span>${[["all","Everything"],["offer","Offering"],["seek","Looking for"]].map(v=>`<button type="button" class="fbtn" data-bk="${v[0]}" aria-pressed="${S.board.k===v[0]}">${v[1]}</button>`).join("")}</div>
-      <div class="filterrow" role="group" aria-label="Category"><span class="k">Category</span>${["All",...BOARD_CATS].map(v=>`<button type="button" class="fbtn" data-bc="${v}" aria-pressed="${S.board.c===v}">${v}</button>`).join("")}</div>
-    </div>
-    <div id="boardout">${boardList()}</div>
-    <form class="form" id="postform" style="margin-top:1.25rem" novalidate>
-      <fieldset><legend>Add a post</legend>
-        <div class="f"><span class="lbl" id="pk-l">I…</span><div class="chips" role="radiogroup" aria-labelledby="pk-l">
-          <label class="chip"><input type="radio" name="pk" id="pk-offer" value="offer" checked><span>can offer</span></label>
-          <label class="chip"><input type="radio" name="pk" id="pk-seek" value="seek"><span>am looking for</span></label></div></div>
-        <div class="row2">
-          <div class="f"><label for="pc">Category</label><select id="pc">${BOARD_CATS.map(c=>`<option>${c}</option>`).join("")}</select></div>
-          <div class="f"><label for="pb">Your business</label><input id="pb" type="text" autocomplete="organization" placeholder="Business name"></div>
-        </div>
-        <div class="f"><label for="pt">What is it?</label><input id="pt" type="text" placeholder="e.g. Need a photographer for our new menu"></div>
-        <p class="err" id="perr" hidden>Add your business name and a short description.</p>
-        <div class="btnrow" style="align-items:center"><button class="btn btn-primary" type="submit">Post it</button><span class="formnote">Prototype: posts show here but aren’t saved. CB9 would review posts before they appear. ${V}</span></div>
-      </fieldset>
-    </form>
-  </div></section>
-
-  <section class="section" id="l-involve" style="scroll-margin-top:6rem"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">Get involved</span><h2>Ways to take part</h2><p class="lede">Pick one. We’ll follow up with details.</p></div></div>
-    <div class="involve">
-      ${[["Attend a networking event","Meet owners from across the district. Low-key, no pitch required.","Networking events"],
-         ["Host an event at your space","Bring people through your door. We help promote it.","Hosting an event"],
-         ["Join a Shop Local campaign","Window signs, social posts and a spot in our campaign guide.","Shop Local initiatives"],
-         ["Join the directory","Let neighbors and other businesses find you.","__dir"],
-         ["Speak at a future program","Share what you’ve learned with other owners.","Speaking at a CB9 program"],
-         ["Collaborate with another business","Joint events, cross-promotion, shared vendors.","Collaborating with other businesses"]]
-        .map(t=>`<div class="inv"><h3>${t[0]}</h3><p>${t[1]}</p><a class="btn btn-ghost btn-sm" href="#join" data-interest="${t[2]}">Count me in ${ico("arrow")}</a></div>`).join("")}
-    </div>
-  </div></section>
-
-  <section class="section" id="l-heard" style="scroll-margin-top:6rem"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">What we’re hearing</span><h2>What We Heard — ${HEARD.month}</h2>
-      <p class="lede">Business owners told us their biggest challenges are below. Here’s what we’re doing, and where each one stands. <span class="verify">Sample data</span></p></div></div>
-    ${heardHTML()}
-    <div class="btnrow" style="margin-top:1.25rem;align-items:center"><a class="btn btn-primary" href="#ask">Tell us what you’re facing ${ico("arrow")}</a><span class="muted" style="font-size:1rem">Past reports: <span class="ph">[archive]</span></span></div>
-  </div></section>
-
-  <section class="section" id="l-opps" style="scroll-margin-top:6rem"><div class="wrap">
-    <div class="sec-head"><div class="stack"><span class="eyebrow">Upcoming opportunities</span><h2>Events, workshops and campaigns</h2></div><a class="btn btn-ghost btn-sm" href="#events">All events ${ico("arrow")}</a></div>
+  <section class="section" style="border-top:0;padding-top:.5rem"><div class="wrap">
+    <div class="sec-head"><div class="stack"><span class="eyebrow">Upcoming</span><h2>Business events</h2></div></div>
     <div class="evlist">${EVENTS.map(evItem).join("")}</div>
   </div></section>
 
-  <section class="section"><div class="wrap">${joinBand()}</div></section>`;
-}
-function dirList(){
-  const d = S.dir, q = d.q.trim().toLowerCase();
-  const list = BIZ.filter(b=>(d.hood==="All"||b.hood===d.hood)&&(d.cat==="All"||b.cat===d.cat)&&(d.type==="All"||b.type===d.type)&&(!q||(b.n+" "+b.cat+" "+b.d+" "+b.st).toLowerCase().includes(q)));
-  if(!list.length) return `<p class="count">No businesses match yet. Try fewer filters, or <a href="#join" data-diropt>add your business</a>.</p>`;
-  return `<p class="count" aria-live="polite">${list.length} business${list.length===1?"":"es"}</p><div class="dir">${list.map(b=>`
-    <article class="biz"><div class="hd"><span class="ava" aria-hidden="true">${b.n.split(/\s+/).filter(w=>/^[A-Z]/.test(w)).slice(0,2).map(w=>w[0]).join("")}</span>
-      <div><h3>${b.n}</h3><div class="sub">${b.cat} · ${b.type}</div></div></div>
-      <p>${b.d}</p>
-      <div class="tags"><span class="tag">${ico("pin")}&nbsp;${b.st}</span><span class="tag">${b.hood}</span></div>
-      <p style="font-size:.9375rem"><strong>Open to:</strong> ${b.open.join(", ")}</p>
-      <span class="verify" style="justify-self:start">Sample listing</span>
-    </article>`).join("")}</div>`;
-}
-function boardList(){
-  const list = POSTS.filter(p=>(S.board.k==="all"||p.k===S.board.k)&&(S.board.c==="All"||p.c===S.board.c));
-  if(!list.length) return `<p class="count">Nothing here yet. Be the first to post below.</p>`;
-  return `<div class="board">${list.map(p=>`<article class="post ${p.k}"><span class="kind">${p.k==="offer"?"Can offer":"Looking for"} · ${p.c}</span><p>${esc(p.t)}</p><span class="by">${esc(p.by)}</span></article>`).join("")}</div>`;
+  <section class="section"><div class="wrap">
+    <div class="sec-head"><div class="stack"><span class="eyebrow">Get involved</span><h2>Three ways to take part</h2></div></div>
+    <div class="cards3">
+      <div class="lcard"><h3>Join a Shop Local promotion</h3><p>Free window signs, social media features and a spot in our neighborhood guide.</p><a class="btn btn-primary btn-sm" href="#join" data-interest="Shop Local promotions">Count me in</a></div>
+      <div class="lcard"><h3>Work with nearby businesses</h3><p>Owner mixers, joint events, shared vendors, and help organizing your corridor.</p><p style="font-size:.9375rem">Looking for a specific local business? <span class="ph">[Link to existing directory, if any]</span></p><a class="btn btn-primary btn-sm" href="#join" data-interest="Working with nearby businesses">Count me in</a></div>
+      <div class="lcard"><h3>Shape what CB9 works on</h3><p>Come to an Economic Development Committee meeting, or tell us the issue on your block.</p><a class="btn btn-primary btn-sm" href="#tell" data-topic="other">Tell CB9</a></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="sec-head"><div class="stack"><span class="eyebrow">What we’re hearing from CB9 businesses</span><h2>You told us. Here’s what we’re doing.</h2><p class="muted">${HEARD.label} ${V}</p></div></div>
+    ${heardHTML()}
+  </div></section>
+
+  <section class="section"><div class="wrap"><div class="band join"><span class="eyebrow">Free · about a minute</span>
+    <h2>Join the CB9 Local Business Network</h2><p>Hear about promotions, mixers and the issues we’re working on.</p>
+    <div class="btnrow"><a class="btn btn-primary" href="#join">Join the network ${ico("arrow")}</a></div></div></div></section>`;
 }
 
-function events(){
-  return `<section class="hero"><div class="wrap stack"><span class="eyebrow">Events</span><h1 data-h>What’s coming up</h1>
-    <p class="lede">Committee meetings are open to everyone. Workshops and mixers are free unless noted.</p></div></section>
-    <section style="padding-bottom:3rem"><div class="wrap split">
-      <div class="evlist">${EVENTS.map(evItem).join("")}</div>
-      <div class="stack" style="gap:1rem">
-        <article class="feature"><div class="awning" aria-hidden="true"></div><div class="in"><span class="eyebrow">Want to host?</span><h3>Bring an event to your space</h3><p>We help local businesses host workshops, mixers and pop-ups.</p><div class="btnrow"><a class="btn btn-accent" href="#join" data-interest="Hosting an event">I’d like to host</a></div></div></article>
-        <p class="muted" style="font-size:1rem">Calendar feed and RSVP tool: <span class="ph">[CB9 to choose]</span></p>
+function tell(){
+  return `<section class="hero"><div class="wrap narrow stack"><span class="eyebrow">Tell CB9</span><h1 data-h>What are you dealing with?</h1>
+    <p class="lede">In your own words. This isn’t a complaint form. A committee member reads every one.</p></div></section>
+  <section><div class="wrap narrow" id="tellwrap">
+    <form class="form" id="tellform" novalidate>
+      <div class="f"><span class="lbl" id="t-topic-l">What’s it about?</span>
+        <div class="chips" role="radiogroup" aria-labelledby="t-topic-l">${TOPICS.map(t=>`<label class="chip"><input type="radio" name="topic" id="t-${t[0]}" value="${t[1]}" ${S.topic===t[0]?"checked":""}><span>${t[1]}</span></label>`).join("")}</div></div>
+      <div class="f"><label for="t-desc">What’s going on?</label><textarea id="t-desc" placeholder="A few sentences is plenty. Include dates or 311 numbers if you have them."></textarea></div>
+      <div class="f"><span class="lbl" id="t-ag-l">Have you already contacted a City agency?</span>
+        <div class="chips" role="radiogroup" aria-labelledby="t-ag-l">
+          <label class="chip"><input type="radio" name="agency" id="ag-yes" value="yes"><span>Yes</span></label>
+          <label class="chip"><input type="radio" name="agency" id="ag-no" value="no"><span>No</span></label></div></div>
+      <div class="f" id="whichagency" hidden><label for="t-which">Which one? Any case or 311 number?</label><input id="t-which" type="text"></div>
+      <div class="row2">
+        <div class="f"><label for="t-name">Your name</label><input id="t-name" type="text" autocomplete="name"></div>
+        <div class="f"><label for="t-biz">Business and street</label><input id="t-biz" type="text" placeholder="e.g. Corner bakery on Rogers Ave"></div>
       </div>
-    </div></section>
-    <section class="section"><div class="wrap">${joinBand()}</div></section>`;
-}
-
-function ask(){
-  const topics = [["open","Opening a business"],["city","Permit, violation or City problem"],["money","Funding"],["lease","Lease or landlord"],["hiring","Hiring"],["grow","Growing my business"],["connect","Connecting with local businesses"],["urgent","Something urgent"],["unsure","Not sure"],["other","Something else"]];
-  const sel = S.askTopic;
-  return `<section class="hero"><div class="wrap stack"><span class="eyebrow">Ask the CB9 Economic Development Committee</span><h1 data-h>How can we help?</h1>
-    <p class="lede">Tell us what’s going on, in your own words. This isn’t a complaint form. A committee member will read it and point you to a next step.</p></div></section>
-  <section style="padding-bottom:4rem"><div class="wrap" style="max-width:48rem" id="askwrap">
-    <form class="form" id="askform" novalidate>
-      <fieldset><legend>About you</legend>
-        <div class="row2">
-          <div class="f"><label for="a-name">Your name</label><input id="a-name" type="text" autocomplete="name" required></div>
-          <div class="f"><label for="a-biz">Business name</label><input id="a-biz" type="text" autocomplete="organization"><span class="hint">Or “not open yet”.</span></div>
-        </div>
-        <div class="f"><label for="a-addr">Business address or neighborhood</label><input id="a-addr" type="text" autocomplete="street-address" placeholder="e.g. Nostrand Ave near Empire Blvd"></div>
-        <div class="row2">
-          <div class="f"><label for="a-email">Email</label><input id="a-email" type="email" autocomplete="email" required></div>
-          <div class="f"><label for="a-phone">Phone <span class="opt">(optional)</span></label><input id="a-phone" type="tel" autocomplete="tel"></div>
-        </div>
-      </fieldset>
-      <fieldset><legend>What’s going on</legend>
-        <div class="f"><span class="lbl" id="a-topic-l">What do you need help with?</span>
-          <div class="chips" role="radiogroup" aria-labelledby="a-topic-l">${topics.map(t=>`<label class="chip"><input type="radio" name="topic" id="t-${t[0]}" value="${t[1]}" ${sel===t[0]?"checked":""}><span>${t[1]}</span></label>`).join("")}</div></div>
-        <div class="f"><label for="a-desc">Tell us briefly what happened</label><textarea id="a-desc" placeholder="A few sentences is plenty. Include any dates or numbers you have."></textarea></div>
-        <div class="f"><span class="lbl" id="a-ag-l">Have you already contacted a City agency about this?</span>
-          <div class="chips" role="radiogroup" aria-labelledby="a-ag-l">
-            <label class="chip"><input type="radio" name="agency" id="ag-yes" value="yes"><span>Yes</span></label>
-            <label class="chip"><input type="radio" name="agency" id="ag-no" value="no"><span>No</span></label>
-            <label class="chip"><input type="radio" name="agency" id="ag-ns" value="unsure"><span>Not sure</span></label></div></div>
-        <div class="f" id="whichagency" hidden><label for="a-which">Which one? Any case or 311 number?</label><input id="a-which" type="text" placeholder="e.g. Health Department, 311 #311-12345678"></div>
-        <div class="f"><span class="lbl">Add a photo or document <span class="opt">(optional)</span></span>
-          <div class="drop" id="drop"><input id="a-file" type="file" aria-label="Add a photo or document" multiple>
-            <strong>Tap to add a photo of a notice, violation or letter</strong><span class="hint" id="filehint">JPG, PNG or PDF. ${V} file storage</span></div></div>
-      </fieldset>
-      <fieldset><legend class="sr">Permission</legend>
-        <label class="check"><input type="checkbox" id="a-ok" required><span>CB9 may contact me about this request. <span class="muted">We won’t share your information without asking. ${V} privacy policy</span></span></label>
-      </fieldset>
-      <p class="err" id="aerr" hidden>Please add your name, email, and check the permission box so we can reply.</p>
-      <div class="btnrow" style="align-items:center"><button class="btn btn-primary" type="submit">Send to the committee ${ico("arrow")}</button>
-        <span class="formnote">Prototype: nothing is sent. ${V} form destination</span></div>
+      <div class="f"><label for="t-email">Email</label><input id="t-email" type="email" autocomplete="email"><span class="hint">Prefer a call? Add your phone number in the box above.</span></div>
+      <div class="f"><span class="lbl">Photo of a notice or letter <span class="opt">(optional)</span></span>
+        <div class="drop" id="drop"><input id="t-file" type="file" aria-label="Add a photo or document">
+          <strong>Tap to add a photo</strong><span class="hint" id="filehint">JPG, PNG or PDF</span></div></div>
+      <label class="check"><input type="checkbox" id="t-ok"><span>CB9 may follow up with me about this.</span></label>
+      <p class="err" id="terr" hidden tabindex="-1">Add your name and email, and check the box so we can reply.</p>
+      <div class="btnrow"><button class="btn btn-primary" type="submit">Send to CB9 ${ico("arrow")}</button>
+        <span class="formnote">Prototype: nothing is sent. ${V} where this goes</span></div>
     </form>
-    <p class="muted" style="margin-top:1.25rem;font-size:1rem">In an emergency, call 911. For City services, call 311. CB9 is volunteer-run and can’t respond to emergencies.</p>
+    <p class="muted" style="margin-top:1rem;font-size:1rem">Emergency? Call 911. CB9 is volunteer-run and can’t respond to emergencies.</p>
   </div></section>`;
 }
-function askDone(name){
-  return `<div class="done" tabindex="-1" id="doneMsg"><span class="eyebrow">Got it</span><h2>Thanks, ${esc(name)}. We have your question.</h2>
-    <p><strong>What happens next</strong></p>
-    <ol><li>A committee member reads it within <span class="ph">[X business days]</span>.</li><li>We reply by email with a next step or a referral.</li><li>If it’s something many businesses are facing, it may show up in “What We Heard” (never with your name).</li></ol>
-    <div class="btnrow"><a class="btn btn-primary" href="#help">Back to Get help</a><a class="btn btn-ghost" href="#join">Join the network</a></div></div>`;
-}
+const tellDone = n => `<div class="done" tabindex="-1" id="doneMsg"><span class="eyebrow">Got it</span><h2>Thanks, ${esc(n)}. We have it.</h2>
+  <ol><li>A committee member reads it within <span class="ph">[X business days]</span>.</li><li>We reply with a next step or a referral.</li><li>If many businesses face the same thing, it goes into “What we’re hearing” (never with your name).</li></ol>
+  <div class="btnrow"><a class="btn btn-primary" href="#home">Back to Get help</a></div></div>`;
 
-function joinForm(compact){
-  const pre = new Set(S.joinInterests);
+function join(){
+  return `<section class="hero"><div class="wrap narrow stack"><span class="eyebrow">CB9 Local Business Network</span><h1 data-h>Join your neighbors in business</h1>
+    <p class="lede">Free. Hear about promotions, mixers and the issues CB9 is working on.</p></div></section>
+  <section><div class="wrap narrow" id="joinwrap">${joinForm()}</div></section>`;
+}
+function joinForm(){
   return `<form class="form" id="joinform" novalidate>
-    ${compact?"":"<fieldset><legend>Join the CB9 Local Business Network</legend>"}
-    ${compact?'<h2 style="font-size:1.75rem">Join the CB9 Local Business Network</h2><p class="muted">Free. About a minute.</p>':""}
     <div class="row2">
-      <div class="f"><label for="j-name">Your name</label><input id="j-name" type="text" autocomplete="name" required></div>
+      <div class="f"><label for="j-name">Your name</label><input id="j-name" type="text" autocomplete="name"></div>
       <div class="f"><label for="j-biz">Business</label><input id="j-biz" type="text" autocomplete="organization"></div>
     </div>
     <div class="row2">
-      <div class="f"><label for="j-addr">Neighborhood or address</label><input id="j-addr" type="text" list="hoods" autocomplete="street-address"><datalist id="hoods">${HOODS.map(h=>`<option value="${h}">`).join("")}</datalist></div>
-      <div class="f"><label for="j-email">Email</label><input id="j-email" type="email" autocomplete="email" required></div>
+      <div class="f"><label for="j-addr">Street or neighborhood</label><input id="j-addr" type="text"></div>
+      <div class="f"><label for="j-email">Email</label><input id="j-email" type="email" autocomplete="email"></div>
     </div>
-    <div class="row2">
-      <div class="f"><label for="j-web">Website or Instagram <span class="opt">(optional)</span></label><input id="j-web" type="text" placeholder="@yourbusiness"></div>
-      <div class="f"><label for="j-cat">Business category</label><select id="j-cat"><option value="">Choose one</option>${CATEGORIES.map(c=>`<option>${c}</option>`).join("")}</select></div>
-    </div>
+    <div class="f"><label for="j-web">Website or Instagram <span class="opt">(optional)</span></label><input id="j-web" type="text" placeholder="@yourbusiness"></div>
     <div class="f"><span class="lbl" id="j-int-l">I’m interested in <span class="opt">(pick any)</span></span>
-      <div class="chips" role="group" aria-labelledby="j-int-l">${INTERESTS.map((t,i)=>`<label class="chip"><input type="checkbox" id="ji-${i}" value="${t}" ${pre.has(t)?"checked":""}><span>${t}</span></label>`).join("")}</div></div>
-    <label class="check"><input type="checkbox" id="j-dir" ${S.dirOpt?"checked":""}><span>List my business in the public CB9 directory. <span class="muted">Optional. We’ll confirm what’s shown before anything goes live.</span></span></label>
-    <label class="check"><input type="checkbox" id="j-ok" required><span>CB9 may email me about events and resources. I can unsubscribe anytime.</span></label>
-    <p class="err" id="jerr" hidden>Please add your name and email, and check the email permission box.</p>
-    <div class="btnrow" style="align-items:center"><button class="btn btn-accent" type="submit">Join the network ${ico("arrow")}</button><span class="formnote">Prototype: nothing is sent. ${V} list destination</span></div>
-    ${compact?"":"</fieldset>"}
+      <div class="chips" role="group" aria-labelledby="j-int-l">${INTERESTS.map((t,i)=>`<label class="chip"><input type="checkbox" id="ji-${i}" value="${t}" ${S.interest===t?"checked":""}><span>${t}</span></label>`).join("")}</div></div>
+    <label class="check"><input type="checkbox" id="j-ok"><span>CB9 may email me. I can unsubscribe anytime.</span></label>
+    <p class="err" id="jerr" hidden tabindex="-1">Add your name and email, and check the box.</p>
+    <div class="btnrow"><button class="btn btn-accent" type="submit">Join the network ${ico("arrow")}</button><span class="formnote">Prototype: nothing is sent. ${V} list destination</span></div>
   </form>`;
 }
-function joinDone(name){
-  return `<div class="done" tabindex="-1" id="doneMsg"><span class="eyebrow">You’re in</span><h2>Welcome to the network, ${esc(name)}.</h2>
-    <ol><li>Watch for a welcome email from <span class="ph">[CB9 email address]</span>.</li><li>If you asked to be in the directory, we’ll confirm your listing first.</li><li>See you at the next event.</li></ol>
-    <div class="btnrow"><a class="btn btn-primary" href="#help">What do you need help with?</a><a class="btn btn-ghost" href="#local">Doing Business in CB9</a></div></div>`;
-}
-function join(){
-  return `<section class="hero"><div class="wrap stack"><span class="eyebrow">CB9 Local Business Network</span><h1 data-h>Join your neighbors in business</h1>
-    <p class="lede">Free. Get invited to events, Shop Local campaigns, and chances to work with other businesses in the district.</p></div></section>
-    <section style="padding-bottom:4rem"><div class="wrap" style="max-width:48rem" id="joinwrap">${joinForm(false)}</div></section>`;
-}
+const joinDone = n => `<div class="done" tabindex="-1" id="doneMsg"><span class="eyebrow">You’re in</span><h2>Welcome, ${esc(n)}.</h2>
+  <p>Watch for an email from <span class="ph">[CB9 address]</span> about the next promotion and mixer.</p>
+  <div class="btnrow"><a class="btn btn-primary" href="#home">What do you need help with?</a></div></div>`;
 
 function brunch(){
   return `<section class="brunch-hero"><div class="awning" aria-hidden="true"></div><div class="wrap">
@@ -1226,167 +654,75 @@ function brunch(){
       <p class="tag4">Start. Operate. Grow. Get help.</p>
       <p>Bookmark this page. If you’re not sure where to start, start here.</p>
     </div></section>
-    <section style="padding-block:1.75rem 1rem"><div class="wrap stack" style="gap:1rem">
+    <section style="padding-block:1.5rem 1rem"><div class="wrap stack" style="gap:1rem">
       <div class="bigbtns">
-        <a class="bigbtn primary" href="#brunch" data-jump="brunch-join">${ico("people")}Join the CB9 Local Business Network</a>
-        <a class="bigbtn" href="#help">${ico("unsure")}What do you need help with?</a>
-        <a class="bigbtn" href="#ask">${ico("cb9")}Ask the committee a question</a>
+        <button type="button" class="bigbtn primary" data-scroll="b-help">${ico("unsure")}What do you need help with?</button>
+        <a class="bigbtn" href="#join">${ico("people")}Join the CB9 Local Business Network</a>
+        <a class="bigbtn" href="#tell" data-topic="other">${ico("megaphone")}Tell CB9 what we should work on next</a>
       </div>
-      <div class="savetip">${ico("bookmark")}<div><p><strong>Save this to your phone.</strong></p><p>iPhone: tap Share, then “Add to Home Screen.” Android: tap ⋮, then “Add to Home screen.”</p></div></div>
+      <div class="savetip">${ico("bookmark")}<p><strong>Save it to your phone.</strong> iPhone: Share → “Add to Home Screen.” Android: ⋮ → “Add to Home screen.”</p></div>
     </div></section>
-    <section style="padding-block:1rem 2rem"><div class="wrap" style="max-width:48rem;scroll-margin-top:6rem" id="brunch-join"><div id="joinwrap">${joinForm(true)}</div></div></section>
-    <section class="section"><div class="wrap">
-      <div class="sec-head"><div class="stack"><span class="eyebrow">Today</span><h2>At the brunch</h2></div></div>
-      <div class="split">
-        <div class="evlist">
-          ${[["Welcome & introductions",'<span class="ph">[time]</span>'],["Who to call: City resources in 10 minutes",'<span class="ph">[time · speaker]</span>'],["Open conversation: what’s hard right now?",'<span class="ph">[time]</span>'],["Meet your neighbors",'<span class="ph">[time]</span>']]
-            .map((a,i)=>`<article class="ev"><div class="date" aria-hidden="true"><small>PART</small><b>${i+1}</b></div><div><h3>${a[0]}</h3><div class="meta">${a[1]}</div></div></article>`).join("")}
-        </div>
-        <div class="stack" style="gap:1rem">
-          <div class="ready"><h3>Tell us one thing</h3><p style="font-size:1.0625rem">What’s the hardest part of running a business here right now? Your answers shape our next “What We Heard” report.</p><div class="btnrow" style="margin-top:.75rem"><a class="btn btn-primary btn-sm" href="#ask">Share it ${ico("arrow")}</a></div></div>
-          <p class="muted" style="font-size:1rem">Agenda: <span class="ph">[CB9 to confirm]</span></p>
-        </div>
-      </div>
-    </div></section>
-    <section class="section"><div class="wrap"><div class="sec-head"><div class="stack"><span class="eyebrow">Quick help</span><h2>What do you need help with?</h2></div></div><div class="tasks">${P.map(pcard).join("")}</div></div></section>`;
-}
-
-function about(){
-  return `<section class="hero"><div class="wrap stack"><span class="eyebrow">About &amp; contact</span><h1 data-h>Who’s behind this playbook</h1></div></section>
-  <section style="padding-bottom:4rem"><div class="wrap stack" style="gap:2rem">
-    <div class="prose">
-      <p class="lede">The CB9 Small Business Playbook is made by the Economic Development Committee of Brooklyn Community Board 9, a volunteer, advisory body for Crown Heights South, Prospect Lefferts Gardens and Wingate. ${V}</p>
-      <h2>What a Community Board does</h2>
-      <p>Community Boards advise the City on local issues. We hold public meetings, review some applications (like liquor licenses and outdoor dining), and bring neighborhood concerns to City agencies and elected officials.</p>
-      <p>We don’t issue permits, inspect businesses, or set or cancel fines. When you need one of those things, we point you to the agency that does.</p>
-      <h2>What this site is</h2>
-      <p>A plain-language guide to existing City, State and nonprofit resources, plus local opportunities in the district. It doesn’t replace official sites. Always confirm details with the agency.</p>
-      <h2>Languages and accessibility</h2>
-      <p>We aim to meet WCAG 2.2 AA. Translations are planned. ${V} Languages and accessibility review. If something doesn’t work for you, tell us and we’ll fix it.</p>
-    </div>
-    <div class="contact">
-      <div class="c"><b>District office</b><span class="ph">[Street address, Brooklyn NY]</span></div>
-      <div class="c"><b>Phone</b><span class="ph">[(718) XXX-XXXX]</span></div>
-      <div class="c"><b>Email</b><span class="ph">[address@cb9]</span></div>
-      <div class="c"><b>Office hours</b><span class="ph">[Days and hours]</span></div>
-      <div class="c"><b>Committee chair</b><span class="ph">[Name]</span></div>
-      <div class="c"><b>Committee meetings</b><span class="ph">[Schedule and location]</span></div>
-    </div>
-    ${askBand()}
-  </div></section>`;
-}
-
-/* ---------- search ---------- */
-function searchMatches(q){
-  q = q.trim().toLowerCase(); if(q.length<2) return null;
-  const words = q.split(/\s+/);
-  return P.map(p=>{const hay=(p.title+" "+p.sub+" "+p.kw).toLowerCase(); let s=0; words.forEach(w=>{if(hay.includes(w)) s+= (p.kw.split(" ").includes(w)?3:1)}); return [p,s]})
-    .filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,4).map(x=>x[0]);
+    <section class="section" id="b-help" style="scroll-margin-top:5rem"><div class="wrap">
+      <div class="sec-head"><div class="stack"><h2>What do you need help with?</h2></div></div>
+      <div class="tasks">${P.map(pcard).join("")}</div>
+    </div></section>`;
 }
 
 /* ---------- router ---------- */
 const main = document.getElementById("main");
-const mobileAsk = document.getElementById("mobileAsk");
+const tellbar = document.getElementById("tellbar");
 function route(){
-  let h = (location.hash||"").replace(/^#/,"") || "home";
-  let html, nav = null, jumpTo = null, pathId = null;
-  if(h==="home"){html=home();}
-  else if(h==="help"){html=helpIndex();nav="help";}
-  else if(h.startsWith("help-")&&PI[h.slice(5)]){pathId=h.slice(5);html=pathway(PI[pathId]);nav="help";}
-  else if(h==="local"||h.startsWith("local-")){html=local();nav="local";if(h!=="local") jumpTo="l-"+h.slice(6);}
-  else if(h==="events"){html=events();nav="events";}
-  else if(h==="ask"){html=ask();}
+  const h = (location.hash||"").replace(/^#/,"") || "home";
+  let html, nav = null, topic = null;
+  if(h.startsWith("help-") && PI[h.slice(5)]){topic=h.slice(5); html=pathway(PI[topic]); nav="home";}
+  else if(h==="local"){html=local(); nav="local";}
+  else if(h==="tell"){html=tell();}
   else if(h==="join"){html=join();}
   else if(h==="brunch"){html=brunch();}
-  else if(h==="about"){html=about();nav="about";}
-  else {html=home();}
+  else {html=home(); nav="home";}
   main.innerHTML = html;
-  document.querySelectorAll("nav.main a").forEach(a=>a.getAttribute("data-nav")===nav?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
-  const showAsk = !!pathId;
-  mobileAsk.hidden = !showAsk; document.body.classList.toggle("has-mobile-ask",showAsk);
-  if(showAsk) mobileAsk.querySelector("a").setAttribute("data-ask",pathId);
-  closeSheets();
-  if(jumpTo){const t=document.getElementById(jumpTo); if(t){requestAnimationFrame(()=>t.scrollIntoView({block:"start"}));}}
-  else window.scrollTo(0,0);
+  document.querySelectorAll("nav.main a").forEach(a=>a.dataset.nav===nav?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+  tellbar.hidden = (h==="tell");
+  const b = document.getElementById("tellbarBtn");
+  topic ? b.setAttribute("data-topic",topic) : b.removeAttribute("data-topic");
+  window.scrollTo(0,0);
   const h1 = main.querySelector("[data-h]");
-  if(h1 && route.inited){h1.setAttribute("tabindex","-1"); h1.focus({preventScroll:true});}
-  route.inited = true;
-  const t = main.querySelector("h1"); document.title = (h==="home"||!t ? "" : t.textContent+" · ")+"CB9 Small Business Playbook";
+  if(h1 && route.ready){h1.setAttribute("tabindex","-1"); h1.focus({preventScroll:true});}
+  route.ready = true;
+  document.title = (h1 && h!=="home" && h!=="brunch" ? h1.textContent+" · " : "") + "CB9 Small Business Playbook";
 }
-window.addEventListener("hashchange", ()=>{S.guide={step:0,cat:null,res:null}; route();});
+window.addEventListener("hashchange", route);
 
-function closeSheets(){
-  ["sheet","langpanel"].forEach(id=>{document.getElementById(id).hidden=true});
-  document.querySelector("[data-menu]").setAttribute("aria-expanded","false");
-  document.querySelector("[data-lang]").setAttribute("aria-expanded","false");
-}
-
-/* ---------- events ---------- */
+/* ---------- interactions ---------- */
 document.addEventListener("click", e=>{
-  const t = e.target.closest("button,a,[data-g1]"); if(!t) return;
-  if(t.matches("[data-skip]")){main.focus();return;}
-  if(t.matches("[data-menu]")){const s=document.getElementById("sheet"); const open=s.hidden; closeSheets(); s.hidden=!open; t.setAttribute("aria-expanded",String(open)); return;}
-  if(t.matches("[data-lang]")){const s=document.getElementById("langpanel"); const open=s.hidden; closeSheets(); s.hidden=!open; t.setAttribute("aria-expanded",String(open)); return;}
-  if(t.matches("[data-setlang]")){document.querySelectorAll("[data-setlang]").forEach(b=>b.setAttribute("aria-pressed",String(b===t))); document.getElementById("langcode").textContent=t.dataset.setlang; store.set("cb9lang",t.dataset.setlang); return;}
-  if(t.matches("[data-jump]")){
-    const el=document.getElementById(t.dataset.jump); if(el){e.preventDefault(); el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}); const f=el.querySelector("h2,h3,input"); if(f&&f.tagName!=="INPUT"){f.setAttribute("tabindex","-1");f.focus({preventScroll:true});}}
+  const t = e.target.closest("button,a"); if(!t) return;
+  if(t.matches("[data-skip]")){main.focus(); return;}
+  if(t.dataset.topic){S.topic=t.dataset.topic;}
+  if(t.dataset.interest){S.interest=t.dataset.interest;}
+  if(t.dataset.scroll){const el=document.getElementById(t.dataset.scroll); if(el){el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); const h=el.querySelector("h2"); if(h){h.setAttribute("tabindex","-1"); h.focus({preventScroll:true});}} return;}
+  if(t.dataset.helpful){
+    const box=document.getElementById("helpful"), topic=(location.hash||"").replace("#help-","");
+    box.innerHTML = t.dataset.helpful==="yes"
+      ? `<span>Thanks. That helps us know what’s working.</span>`
+      : `<span>Thanks for telling us. What was missing?</span><a class="btn btn-primary btn-sm" href="#tell" data-topic="${esc(topic)}">Tell CB9</a>`;
     return;}
-  if(t.matches("[data-ask]")){S.askTopic=t.dataset.ask;}
-  if(t.matches("[data-interest]")){const v=t.dataset.interest; if(v==="__dir"){S.dirOpt=true}else{S.joinInterests=[v]}}
-  if(t.matches("[data-diropt]")){S.dirOpt=true;}
-  if(t.matches("[data-g1]")){const c=G.find(x=>x.id===t.dataset.g1); if(c.result){S.guide={step:2,cat:c.id,res:c.result}}else{S.guide={step:1,cat:c.id,res:null}} refreshGuide(true); return;}
-  if(t.matches("[data-g2]")){const c=G.find(x=>x.id===S.guide.cat); S.guide={step:2,cat:c.id,res:c.opts[+t.dataset.g2][1]}; refreshGuide(true); return;}
-  if(t.matches("[data-greset]")){S.guide={step:0,cat:null,res:null}; refreshGuide(true); return;}
-  if(t.matches("[data-dir]")){S.dir[t.dataset.dir]=t.dataset.v; t.parentElement.querySelectorAll(".fbtn").forEach(b=>b.setAttribute("aria-pressed",String(b===t))); document.getElementById("dirout").innerHTML=dirList(); return;}
-  if(t.matches("[data-bk]")){S.board.k=t.dataset.bk; t.parentElement.querySelectorAll(".fbtn").forEach(b=>b.setAttribute("aria-pressed",String(b===t))); document.getElementById("boardout").innerHTML=boardList(); return;}
-  if(t.matches("[data-bc]")){S.board.c=t.dataset.bc; t.parentElement.querySelectorAll(".fbtn").forEach(b=>b.setAttribute("aria-pressed",String(b===t))); document.getElementById("boardout").innerHTML=boardList(); return;}
-});
-document.addEventListener("input", e=>{
-  const t = e.target;
-  if(t.matches("[data-search]")){
-    const m = searchMatches(t.value), out = document.getElementById("suggest");
-    if(m===null){out.innerHTML="";return;}
-    out.innerHTML = m.length ? `<span class="sr">${m.length} suggestions</span>`+m.map(p=>`<a href="#help-${p.id}">${ico(p.icon)}${p.title}</a>`).join("")
-      : `<span class="none muted">No match. Try the quick guide below, or <a href="#ask">ask a person</a>.</span>`;
-  }
-  if(t.matches("[data-dirq]")){S.dir.q=t.value; document.getElementById("dirout").innerHTML=dirList();}
 });
 document.addEventListener("change", e=>{
   const t = e.target;
-  if(t.name==="agency"){document.getElementById("whichagency").hidden = t.value!=="yes";}
-  if(t.id==="a-file"){const d=document.getElementById("drop"), n=t.files.length; d.classList.toggle("has",n>0); document.getElementById("filehint").textContent = n? `${n} file${n>1?"s":""} added: ${[...t.files].map(f=>f.name).join(", ")}` : "JPG, PNG or PDF.";}
+  if(t.name==="agency") document.getElementById("whichagency").hidden = t.value!=="yes";
+  if(t.id==="t-file"){const n=t.files.length; document.getElementById("drop").classList.toggle("has",n>0); document.getElementById("filehint").textContent = n ? t.files[0].name : "JPG, PNG or PDF";}
 });
 document.addEventListener("submit", e=>{
   e.preventDefault();
-  const f = e.target;
-  if(f.id==="askform"){
-    const name=f.querySelector("#a-name").value.trim(), email=f.querySelector("#a-email").value.trim(), ok=f.querySelector("#a-ok").checked;
-    const err=f.querySelector("#aerr");
-    if(!name||!/.+@.+\..+/.test(email)||!ok){err.hidden=false; err.setAttribute("tabindex","-1"); err.focus(); return;}
-    document.getElementById("askwrap").innerHTML = askDone(name); document.getElementById("doneMsg").focus(); S.askTopic=null;
-  }
-  if(f.id==="joinform"){
-    const name=f.querySelector("#j-name").value.trim(), email=f.querySelector("#j-email").value.trim(), ok=f.querySelector("#j-ok").checked;
-    const err=f.querySelector("#jerr");
-    if(!name||!/.+@.+\..+/.test(email)||!ok){err.hidden=false; err.setAttribute("tabindex","-1"); err.focus(); return;}
-    document.getElementById("joinwrap").innerHTML = joinDone(name); document.getElementById("doneMsg").focus(); S.joinInterests=[]; S.dirOpt=false;
-  }
-  if(f.id==="postform"){
-    const by=f.querySelector("#pb").value.trim(), txt=f.querySelector("#pt").value.trim(), err=f.querySelector("#perr");
-    if(!by||!txt){err.hidden=false;return;}
-    err.hidden=true;
-    POSTS.unshift({k:f.querySelector("input[name=pk]:checked").value,c:f.querySelector("#pc").value,t:txt,by:by});
-    S.board={k:"all",c:"All"};
-    document.querySelectorAll("[data-bk]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.bk==="all")));
-    document.querySelectorAll("[data-bc]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.bc==="All")));
-    document.getElementById("boardout").innerHTML=boardList(); f.querySelector("#pt").value="";
-  }
+  const f = e.target, pre = f.id==="tellform" ? "t" : "j";
+  const name=f.querySelector(`#${pre}-name`).value.trim(), email=f.querySelector(`#${pre}-email`).value.trim(), ok=f.querySelector(`#${pre}-ok`).checked;
+  if(!name || !/.+@.+\..+/.test(email) || !ok){const err=f.querySelector(".err"); err.hidden=false; err.focus(); return;}
+  const wrap = document.getElementById(pre==="t" ? "tellwrap" : "joinwrap");
+  wrap.innerHTML = pre==="t" ? tellDone(name) : joinDone(name);
+  document.getElementById("doneMsg").focus();
+  S.topic=null; S.interest=null;
 });
-document.addEventListener("keydown", e=>{if(e.key==="Escape") closeSheets();});
 
-/* ---------- boot ---------- */
-const savedLang = store.get("cb9lang");
-if(savedLang){document.querySelectorAll("[data-setlang]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.setlang===savedLang))); document.getElementById("langcode").textContent=savedLang;}
 route();
 })();
 </script>
